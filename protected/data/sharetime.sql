@@ -29,6 +29,7 @@ CREATE TABLE `activities` (
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
   `organizer_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +40,7 @@ CREATE TABLE `activities` (
 
 LOCK TABLES `activities` WRITE;
 /*!40000 ALTER TABLE `activities` DISABLE KEYS */;
-INSERT INTO `activities` VALUES (1,'看电影','跟女朋友约会看电影',NULL,NULL,1);
+INSERT INTO `activities` VALUES (1,'看电影','跟女朋友约会看电影',NULL,NULL,1,'2013-06-02 12:49:37');
 /*!40000 ALTER TABLE `activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-02 20:10:23
+-- Dump completed on 2013-06-02 20:52:36

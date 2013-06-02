@@ -93,4 +93,9 @@ class User extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function username()
+    {
+        return $this->realname? $this->realname : $this->name;
+    }
 }

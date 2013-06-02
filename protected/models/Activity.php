@@ -31,6 +31,16 @@ class Activity extends CActiveRecord
 		return 'activities';
 	}
 
+    public function scopes()
+    {
+        return array(
+            'recently'=>array(
+                'order'=>'created_at DESC',
+                'limit'=>12,
+            ),
+        );
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -58,6 +68,7 @@ class Activity extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'organizer' => array(self::HAS_ONE, 'User', 'id'),
 		);
 	}
 

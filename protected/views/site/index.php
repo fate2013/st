@@ -14,7 +14,14 @@ $this->pageTitle=Yii::app()->name;
 	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
 </ul>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<div class="main">
+    <div id="recent">
+        <div class="title">最近活动</div>
+        <ul>
+            <li>
+                <img src="/images/tx.png" />
+                <?php echo $activities[0]->organizer->username(); ?>
+            </li>   
+        </ul>
+    </div>
+</div>
