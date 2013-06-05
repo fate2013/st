@@ -4,24 +4,26 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
 <div class="main">
     <div id="recent">
-        <div class="title">最近活动</div>
+        <div class="title">
+            <h2>最近活动</h2>
+        </div>
         <ul>
+<?php
+foreach($activities as $a){
+?>
             <li>
                 <img src="/images/tx.png" />
-                <?php echo $activities[0]->organizer->username(); ?>
+                <div>
+发布人:
+    <span><?php echo $a->organizer->username(); ?></span>
+    <span class="subject"><?php echo $a->subject; ?></span>
+                </div>
             </li>   
+<?php
+}
+?>
         </ul>
     </div>
 </div>

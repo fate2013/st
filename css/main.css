@@ -60,7 +60,7 @@ body
 
 #mainmenu ul li
 {
-	display: inline;
+    float: left;
 }
 
 #mainmenu ul li a
@@ -226,4 +226,48 @@ div.search-form
 .operations li a:hover
 {
 	background: #80CFFF;
+}
+
+#recent{
+    float: left;
+    width: 900px;
+    margin: 10px 25px 0 25px;
+}
+.main .title {
+    padding: 0 0 0 9px;
+    background: url('bg.gif');
+    width: 891px;
+    height: 29px;
+    line-height: 29px;
+}
+.main .title h2 {
+    font-size: 14px;
+    font-weight: 900;
+    color: #FFFFFF;
+}
+.main ul {
+    padding: 10px 5px 0 5px;
+}
+.main ul li {
+    width: 100px;
+    height: 158px;
+    padding: 0 10px 0 10px;
+    float: left;
+}
+.main ul li div {
+    width: 100px;
+    height: 50px;
+    padding: 5px 0 0 0;
+    text-align: center;
+    font-size: 13px;
+}
+.main ul li div span {
+    font-weight: bold;
+    color: #CC3300;
+}
+.main ul li div span.subject {
+    color: #0033CC;
+}
+li {
+    list-style: none outside none;
 }
