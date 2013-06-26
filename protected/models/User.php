@@ -12,6 +12,10 @@
  */
 class User extends CActiveRecord
 {
+
+    public $password2;
+	public $verifyCode;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -38,12 +42,15 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
-			array('age, sex', 'numerical', 'integerOnly'=>true),
+			array('name,password,password2', 'required'),
+            array('name', 'unique'),
+            array('password, password2', 'length', 'min'=>6, 'max'=>18),
+            array('password2', 'compare', 'compareAttribute'=>'password'),
 			array('name, realname', 'length', 'max'=>20),
+			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, realname, age, sex', 'safe', 'on'=>'search'),
+			array('id, name, realname', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,6 +62,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'profile'=>array(self::HAS_ONE, 'UserProfile', 'id'),
 		);
 	}
 
@@ -67,8 +75,8 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Name',
 			'realname' => 'Realname',
-			'age' => 'Age',
-			'sex' => 'Sex',
+            'password' => 'Password',
+			'verifyCode'=>'请输入验证码',
 		);
 	}
 
@@ -94,8 +102,9 @@ class User extends CActiveRecord
 		));
 	}
 
-    public function username()
+    public function displayName()
     {
         return $this->realname? $this->realname : $this->name;
     }
+
 }

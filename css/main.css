@@ -50,6 +50,7 @@ body
 #mainmenu
 {
 	background:white url(bg.gif) repeat-x left top;
+    height: 50px;
 }
 
 #mainmenu ul
@@ -231,6 +232,8 @@ div.search-form
 #recent{
     float: left;
     width: 900px;
+}
+.main {
     margin: 10px 25px 0 25px;
 }
 .main .title {
@@ -271,3 +274,4 @@ div.search-form
 li {
     list-style: none outside none;
 }
+div.form label.labelForRadio {display:inline;width:auto;float:none;}

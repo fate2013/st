@@ -51,10 +51,13 @@ return array(
 			'password' => '123456',
 			'charset' => 'utf8',
 		),
-		'errorHandler'=>array(
-			// use 'site/error' action to display errors
-			'errorAction'=>'site/error',
-		),
+        'session' => array(
+            'autoStart' => true,
+            'sessionName'=>'sharetime',
+            'class' => 'system.web.CDbHttpSession',//create table yiisession
+            'connectionID' => 'db',
+            'sessionTableName' => 'sessions',
+        ),
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
