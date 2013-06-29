@@ -2,14 +2,19 @@
 
 class ActivityController extends Controller
 {
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
-	public function actionIndex()
+    public function actionIndex()
+    {
+        $aid = $_REQUEST['aid'];
+        $activity = Activity::model()->findByPk($aid);
+        $this->render('index',array(
+            'act' => $activity,
+        ));
+    }
+
+	public function actionUser()
 	{
         $activities = Activity::model()->findAll('organizer_id=:organizer_id',array(':organizer_id'=>$_GET['uid']));
-        $this->render('index',array(
+        $this->render('user',array(
             'activities' => $activities,
         ));
 	}
@@ -32,5 +37,4 @@ class ActivityController extends Controller
         }
         $this->render('create');
     }
-
 }
