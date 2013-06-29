@@ -11,6 +11,14 @@ class ActivityController extends Controller
         ));
     }
 
+    public function actionList()
+    {
+        $activities = Activity::model()->recently(10)->findAll();
+        $this->render('list',array(
+            'activities' => $activities,
+        ));
+    }
+
 	public function actionUser()
 	{
         $activities = Activity::model()->findAll('organizer_id=:organizer_id',array(':organizer_id'=>$_GET['uid']));
