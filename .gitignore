@@ -1,4 +1,4 @@
-assets/
-protected/runtime/
+assets/*
+protected/runtime/*
 themes/classic/views/
 *.swp
