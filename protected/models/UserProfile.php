@@ -16,11 +16,10 @@ class UserProfile extends CActiveRecord
 
     public function rules(){
         return array(
-            array('portrait', 'required'),
             array('sex', 'required'),
             array('sex', 'boolean'),
 			array('age', 'numerical', 'integerOnly'=>true, 'max'=>150),
-            array('image', 'file', 'types'=>'jpg, jpeg, gif, png'),
+            array('image', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty'=>true, 'maxSize'=>1024*1024*2),
 			array('id, age, sex', 'safe', 'on'=>'search'),
         );
     }
@@ -50,11 +49,16 @@ class UserProfile extends CActiveRecord
 
     public function saveProfile(){
         $this->image=CUploadedFile::getInstance($this, 'image');
-        $filepath = "images/{$this->image->name}";
-        if($this->image->saveAs($filepath)){
-            $this->portrait = "/{$filepath}";
-            $this->save();
+        if($this->image){
+            $filepath = "images/{$this->image->name}";
+            if($this->image->saveAs($filepath)){
+                $this->portrait = "/{$filepath}";
+                return $this->save();
+            }
+        } else {
+            return $this->save();
         }
+        return false;
     }
 }
 

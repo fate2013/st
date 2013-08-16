@@ -21,13 +21,23 @@ class UserController extends Controller
         ));
 	}
 
-    public function actionCreateProfile(){
+    public function actionUpdateProfile(){
         $uid = Yii::app()->session['user']->id;
         $profile = UserProfile::model()->findByPk($uid);
+        if(empty($profile)){
+            $profile = new UserProfile;
+            $profile->id = $uid;
+        }
         $profile->sex = 0;
         if(isset($_POST['UserProfile'])){
-			$profile->attributes=$_POST['UserProfile'];
-            $profile->saveProfile();
+            foreach($_POST['UserProfile'] as $key=>$value){
+                if(!empty($value)){
+                    $profile->$key=$value;
+                }
+            }
+            if($profile->saveProfile()){
+                $this->redirect(Yii::app()->user->returnUrl);
+            }
         }
         $this->render('create_profile', array(
             'model'=>$profile,
@@ -47,8 +57,15 @@ class UserController extends Controller
 
             if($model->validate()){
                 // save user registration
-                $model->save();
-                $this->redirect('index');
+                $model->password = $model->password2 = md5($model->password);
+                $succ = $model->save();
+                //login
+                $form = new LoginForm;
+                $form->username = $model->name;
+                $form->password = $_POST['User']['password'];
+                $form->login();
+                if($succ)
+                    $this->redirect('/user/updateprofile');
             }
         }
 

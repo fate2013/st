@@ -44,7 +44,6 @@ class User extends CActiveRecord
 		return array(
 			array('name,password,password2', 'required'),
             array('name', 'unique'),
-            array('password, password2', 'length', 'min'=>6, 'max'=>18),
             array('password2', 'compare', 'compareAttribute'=>'password'),
 			array('name, realname', 'length', 'max'=>20),
 			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.22, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.31, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: sharetime
 -- ------------------------------------------------------
--- Server version	5.5.22-0ubuntu1
+-- Server version	5.5.31-0ubuntu0.12.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -65,7 +65,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('8j4fbk46hhm0fo49klgaq5lpl6',1372490933,'075a49c1fbfabf6bba5a0a23047b2e9f__id|s:5:\"admin\";075a49c1fbfabf6bba5a0a23047b2e9f__name|s:5:\"admin\";075a49c1fbfabf6bba5a0a23047b2e9f__states|a:0:{}');
+INSERT INTO `sessions` VALUES ('kh6to2ac1mpojifg77appposv1',1376379950,'Yii.CCaptchaAction.1641fc28.user.captcha|s:6:\"wfjigi\";Yii.CCaptchaAction.1641fc28.user.captchacount|i:1;user|O:4:\"User\":14:{s:9:\"password2\";N;s:10:\"verifyCode\";N;s:18:\"\0CActiveRecord\0_md\";N;s:19:\"\0CActiveRecord\0_new\";b:0;s:26:\"\0CActiveRecord\0_attributes\";a:6:{s:2:\"id\";s:1:\"8\";s:4:\"name\";s:3:\"ttt\";s:8:\"realname\";N;s:3:\"age\";N;s:3:\"sex\";N;s:8:\"password\";s:32:\"e10adc3949ba59abbe56e057f20f883e\";}s:23:\"\0CActiveRecord\0_related\";a:0:{}s:17:\"\0CActiveRecord\0_c\";N;s:18:\"\0CActiveRecord\0_pk\";s:1:\"8\";s:21:\"\0CActiveRecord\0_alias\";s:1:\"t\";s:15:\"\0CModel\0_errors\";a:0:{}s:19:\"\0CModel\0_validators\";N;s:17:\"\0CModel\0_scenario\";s:6:\"update\";s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}81057d4dfe8295c82d2f38af0b24400a__id|s:3:\"ttt\";81057d4dfe8295c82d2f38af0b24400a__name|s:3:\"ttt\";81057d4dfe8295c82d2f38af0b24400a__states|a:0:{}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `user_profiles` (
   `age` smallint(6) DEFAULT NULL,
   `sex` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +117,7 @@ CREATE TABLE `user_profiles` (
 
 LOCK TABLES `user_profiles` WRITE;
 /*!40000 ALTER TABLE `user_profiles` DISABLE KEYS */;
-INSERT INTO `user_profiles` VALUES (1,'/images/fate.jpeg',28,1);
+INSERT INTO `user_profiles` VALUES (1,'/images/fate.jpeg',28,1),(8,'/images/收藏夹的添加修改删除.png',11,0);
 /*!40000 ALTER TABLE `user_profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,11 +132,10 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `realname` varchar(20) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  `sex` tinyint(4) DEFAULT NULL,
+  `password` char(32) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +144,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'fate2013','张凯宏',27,1),(2,'zcc','庄翠翠',25,0),(3,'xtf','谢霆锋',30,1);
+INSERT INTO `users` VALUES (1,'fate2013','张凯宏','e10adc3949ba59abbe56e057f20f883e'),(2,'zcc','庄翠翠','e10adc3949ba59abbe56e057f20f883e'),(3,'xtf','谢霆锋','e10adc3949ba59abbe56e057f20f883e'),(5,'halo',NULL,'e10adc3949ba59abbe56e057f20f883e'),(6,'haloo',NULL,'e10adc3949ba59abbe56e057f20f883e'),(7,'uuu',NULL,'e10adc3949ba59abbe56e057f20f883e'),(8,'ttt',NULL,'e10adc3949ba59abbe56e057f20f883e');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -158,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-29 15:20:00
+-- Dump completed on 2013-08-13 15:22:47
