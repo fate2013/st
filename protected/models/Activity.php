@@ -69,6 +69,8 @@ class Activity extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'organizer' => array(self::BELONGS_TO, 'User', 'organizer_id'),
+            'user_activities' => array(self::HAS_MANY, 'UserActivity', 'aid'),
+            'parts' => array(self::HAS_MANY, 'User', array('uid' => 'id'), 'through'=>'user_activities'),
 		);
 	}
 

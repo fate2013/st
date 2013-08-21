@@ -19,14 +19,6 @@ class ActivityController extends Controller
         ));
     }
 
-	public function actionUser()
-	{
-        $activities = Activity::model()->findAll('organizer_id=:organizer_id',array(':organizer_id'=>$_GET['uid']));
-        $this->render('user',array(
-            'activities' => $activities,
-        ));
-	}
-
     public function actionCreate()
     {
         $activity = new Activity;

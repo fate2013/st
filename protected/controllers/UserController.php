@@ -15,11 +15,25 @@ class UserController extends Controller
 
 	public function actionIndex()
 	{
-        $activities = Activity::model()->recently()->findAll();
+        $activities = Activity::model()->recently()->findAll('organizer_id=:organizer_id',array(':organizer_id'=>Yii::app()->session['user']->id));
+        $relatedActs = Yii::app()->session['user']->related_acts;
+
+        $recentActs = Activity::model()->recently()->findAll();
         $this->render('index',array(
             'activities' => $activities,
+            'relatedActs' => $relatedActs,
+            'recentActs' => $recentActs,
         ));
 	}
+
+    public function actionTest()
+    {
+        $act = Activity::model()->findByPk(1);
+        $parts = $act->parts;
+        foreach($parts as $part){
+            var_dump($part->displayName());
+        }
+    }
 
     public function actionUpdateProfile(){
         $uid = Yii::app()->session['user']->id;

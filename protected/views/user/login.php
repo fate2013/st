@@ -26,13 +26,13 @@ $this->breadcrumbs=array(
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
+		<?php echo $form->textField($model,'username', array('tabindex'=>1, 'autofocus'=>true)); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password', array('tabindex'=>2)); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
@@ -42,7 +42,7 @@ $this->breadcrumbs=array(
 		<div>
 		<?php $this->widget('CCaptcha'); ?>
         <br />
-		<?php echo $form->textField($model,'verifyCode'); ?>
+		<?php echo $form->textField($model,'verifyCode', array('tabindex'=>3, 'autocomplete'=>'off')); ?>
 		</div>
 		<div class="hint">Please enter the letters as they are shown in the image above.
 		<br/>Letters are not case-sensitive.</div>

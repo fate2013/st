@@ -1,4 +1,3 @@
-<div class='main'>
 <form action="create" method='POST'>
 <input type='text' id='act_subject' name='Activity[subject]' placeholder='题目' required='true' />
 <br />
@@ -11,4 +10,3 @@
 <br />
 <input type='submit' value='提交' />
 </form>
-</div>
