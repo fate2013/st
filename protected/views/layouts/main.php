@@ -8,6 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
+    <script src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js'></script>
+    <script src='<?php echo Yii::app()->request->baseUrl; ?>/js/index.js'></script>
+
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -59,10 +62,12 @@ $this->pageTitle=Yii::app()->name;
             <?php echo Yii::app()->session['user']->displayname();?>
         </div>
         <div class='left_nav'>
-            <div class='top_bar'></div>
+            <div class='top_bar'>
+                活动列表
+            </div>
             <ul>
                 <li><a href='/user/index' class='selected'>我的活动</a></li>
-                <li><a href='#'>活动列表</a></li>
+                <li><a href='#'>活动搜索</a></li>
                 <li><a href='#'>创建活动</a></li>
                 <li><a href='#'>个人设置</a></li>
             </ul>
@@ -84,7 +89,7 @@ $this->pageTitle=Yii::app()->name;
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		<?php echo Myii::powered(); ?>
 	</div><!-- footer -->
 
 </div><!-- page -->

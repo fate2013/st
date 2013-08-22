@@ -8,7 +8,6 @@
  * @property string $subject
  * @property string $profile
  * @property string $start_time
- * @property string $end_time
  * @property integer $organizer_id
  */
 class Activity extends CActiveRecord
@@ -53,10 +52,9 @@ class Activity extends CActiveRecord
 			array('organizer_id', 'numerical', 'integerOnly'=>true),
 			array('subject', 'length', 'max'=>300),
 			array('profile', 'length', 'max'=>2000),
-			array('start_time, end_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, subject, profile, start_time, end_time, organizer_id', 'safe', 'on'=>'search'),
+			array('id, subject, profile, start_time, organizer_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,8 +81,7 @@ class Activity extends CActiveRecord
 			'id' => 'ID',
 			'subject' => 'Subject',
 			'profile' => 'Profile',
-			'start_time' => 'Start Time',
-			'end_time' => 'End Time',
+			'start_time' => '活动时间',
 			'organizer_id' => 'Organizer',
 		);
 	}
@@ -104,7 +101,6 @@ class Activity extends CActiveRecord
 		$criteria->compare('subject',$this->subject,true);
 		$criteria->compare('profile',$this->profile,true);
 		$criteria->compare('start_time',$this->start_time,true);
-		$criteria->compare('end_time',$this->end_time,true);
 		$criteria->compare('organizer_id',$this->organizer_id);
 
 		return new CActiveDataProvider($this, array(
