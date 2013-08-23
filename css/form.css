@@ -43,6 +43,7 @@ div.form textarea,
 div.form select
 {
 	margin: 0.2em 0 0.5em 0;
+	border: 1px solid #AAA;
 }
 
 div.form fieldset
@@ -61,6 +62,11 @@ div.form label
 }
 
 div.form .row
+{
+	margin: 5px 0;
+}
+
+div.form .row2
 {
 	margin: 5px 0;
 }
@@ -150,11 +156,21 @@ div.wide.form label
 	position: relative;
 	text-align: right;
 	width: 100px;
+    top: 5px;
 }
-
+div.wide.form label.labelForRadio
+{
+    top: 0;
+}
 div.wide.form .row
 {
-	clear: left;
+    float: left;
+    width: 100%;
+}
+
+div.wide.form .row2
+{
+    float: left;
 }
 
 div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
@@ -162,3 +178,6 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	clear: left;
 	padding-left: 110px;
 }
+.label_gray{color:#999;font-weight:normal;}
+.ui-datepicker-year{border:blue}
+.ui-datepicker-month{border:blue}

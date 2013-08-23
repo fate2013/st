@@ -65,12 +65,24 @@ $this->pageTitle=Yii::app()->name;
             <div class='top_bar'>
                 活动列表
             </div>
-            <ul>
-                <li><a href='/user/index' class='selected'>我的活动</a></li>
-                <li><a href='#'>活动搜索</a></li>
-                <li><a href='#'>创建活动</a></li>
-                <li><a href='#'>个人设置</a></li>
-            </ul>
+            <?php $this->widget('zii.widgets.CMenu',array(
+                'items'=>array(
+                    array('label'=>'发布的活动', 'url'=>array('/user/myrelease')),
+                    array('label'=>'参与的活动', 'url'=>array('/user/mypart')),
+                    array('label'=>'近期活动列表', 'url'=>array('/activity/list')),
+                    array('label'=>'创建活动', 'url'=>array('/activity/create')),
+                ),
+            )); ?>
+
+            <div class="clear"></div>
+            <div class='top_bar'>
+                个人设置
+            </div>
+            <?php $this->widget('zii.widgets.CMenu',array(
+                'items'=>array(
+                    array('label'=>'修改资料', 'url'=>array('/user/updateprofile')),
+                ),
+            )); ?>
         </div>
     </div>
     <div class='content'>

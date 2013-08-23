@@ -63,7 +63,7 @@ class User extends CActiveRecord
 		return array(
             'profile'=>array(self::HAS_ONE, 'UserProfile', 'id'),
             'user_activities' => array(self::HAS_MANY, 'UserActivity', 'uid'),
-            'related_acts'=>array(self::HAS_MANY, 'Activity', array('aid'=>'id'), 'through'=>'user_activities'),
+            'related_acts'=>array(self::HAS_MANY, 'Activity', array('aid'=>'id'), 'through'=>'user_activities', 'order'=>'created_at desc'),
 		);
 	}
 

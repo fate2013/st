@@ -16,7 +16,8 @@ class UserController extends Controller
 	public function actionIndex()
 	{
         $activities = Activity::model()->recently()->findAll('organizer_id=:organizer_id',array(':organizer_id'=>Yii::app()->session['user']->id));
-        $relatedActs = Yii::app()->session['user']->related_acts;
+        $user = User::model()->findByPk(Yii::app()->session['user']->id);
+        $relatedActs = $user->related_acts;
 
         $recentActs = Activity::model()->recently()->findAll();
         $this->render('index',array(
@@ -25,6 +26,25 @@ class UserController extends Controller
             'recentActs' => $recentActs,
         ));
 	}
+
+    public function actionMyRelease()
+    {
+        $activities = Activity::model()->recently(20)->findAll('organizer_id=:organizer_id',array(':organizer_id'=>Yii::app()->session['user']->id));
+        $this->render('my_release',array(
+            'activities' => $activities,
+            'typelist' => ActTypeList::$list,
+        ));
+    }
+
+    public function actionMypart()
+    {
+        $user = User::model()->findByPk(Yii::app()->session['user']->id);
+        $activities = $user->related_acts(array('limit'=>20));
+
+        $this->render('my_part',array(
+            'activities' => $activities,
+        ));
+    }
 
     public function actionTest()
     {
@@ -49,11 +69,12 @@ class UserController extends Controller
                     $profile->$key=$value;
                 }
             }
+            $profile->age = date('Y') - substr($profile->birthday, 0, 4);
             if($profile->saveProfile()){
                 $this->redirect(Yii::app()->user->returnUrl);
             }
         }
-        $this->render('create_profile', array(
+        $this->render('update_profile', array(
             'model'=>$profile,
             'user' => Yii::app()->session['user'],
         ));

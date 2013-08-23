@@ -1,6 +1,6 @@
 <div class="recent">
     <div class="title">
-        <h2>我发布的活动</h2>
+        <h2><a href="/user/myrelease">我发布的活动</a></h2>
     </div>
     <ul>
 <?php
@@ -23,7 +23,7 @@ foreach($activities as $a){
 
 <div class="recent">
     <div class="title">
-        <h2>喊我参加的活动</h2>
+        <h2><a href="/user/mypart">我参与的活动</a></h2>
     </div>
     <ul>
 <?php
@@ -46,7 +46,7 @@ foreach($relatedActs as $a){
 
 <div class="recent">
     <div class="title">
-        <h2>最近的活动</h2>
+        <h2><a href="/activity/recent">最近的活动</a></h2>
     </div>
     <ul>
 <?php

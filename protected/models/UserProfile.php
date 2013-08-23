@@ -20,7 +20,7 @@ class UserProfile extends CActiveRecord
             array('sex', 'boolean'),
 			array('age', 'numerical', 'integerOnly'=>true, 'max'=>150),
             array('image', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty'=>true, 'maxSize'=>1024*1024*2),
-			array('id, age, sex', 'safe', 'on'=>'search'),
+			array('id, age, sex, birthday', 'safe', 'on'=>'search'),
         );
     }
 
@@ -31,6 +31,7 @@ class UserProfile extends CActiveRecord
             'image' => '头像上传',
 			'age' => 'Age',
 			'sex' => 'Sex',
+			'birthday' => '生日',
         );
     }
 

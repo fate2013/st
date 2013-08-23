@@ -1,4 +1,4 @@
-<div class="form">
+<div class="wide form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'new-act-form',
 	'enableClientValidation'=>true,
@@ -9,10 +9,15 @@
 )); ?>
 
 
-<div class="row">
+<div class="row2">
     <?php echo $form->labelEx($model,'subject'); ?>
     <?php echo $form->textField($model,'subject'); ?>
     <?php echo $form->error($model,'subject'); ?>
+</div>
+<div class="row2">
+    <?php echo $form->labelEx($model,'type'); ?>
+    <?php echo $form->dropDownList($model,'type',ActTypeList::$list); ?>
+    <?php echo $form->error($model,'type'); ?>
 </div>
 <div class="row">
     <?php echo $form->labelEx($model,'profile'); ?>
@@ -34,6 +39,6 @@
 <script>
 $("#Activity_start_time").datepicker({
     dateFormat: "yy-mm-dd",
-    appendText: "(yyyy-mm-dd)"
+//    appendText: "(yyyy-mm-dd)"
 });
 </script>

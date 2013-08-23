@@ -13,8 +13,16 @@ class ActivityController extends Controller
 
     public function actionList()
     {
-        $activities = Activity::model()->recently(10)->findAll();
+        $activities = Activity::model()->recently(24)->findAll();
         $this->render('list',array(
+            'activities' => $activities,
+        ));
+    }
+
+    public function actionRecent()
+    {
+        $activities = Activity::model()->recently(24)->findAll();
+        $this->render('recent',array(
             'activities' => $activities,
         ));
     }
@@ -29,9 +37,6 @@ class ActivityController extends Controller
         } elseif(isset($_POST['Activity'])) {
             if(empty($_POST['Activity']['start_time'])){
                 $_POST['Activity']['start_time'] = null;
-            }
-            if(empty($_POST['Activity']['end_time'])){
-                $_POST['Activity']['end_time'] = null;
             }
             if(isset($_POST['Activity'])){
                 $activity->attributes = $_POST['Activity'];
