@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient
+END
+EHostnameValidator.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/EHostnameValidator.php
+END
+ECookieJar.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/ECookieJar.php
+END
+EHttpCookie.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/EHttpCookie.php
+END
+EHttpResponseStream.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/EHttpResponseStream.php
+END
+EHttpClient.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/EHttpClient.php
+END
+EHttpResponse.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/EHttpResponse.php
+END
+EUri.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/EUri.php
+END
+EUriHttp.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/EUriHttp.php
+END

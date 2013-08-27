@@ -1,6 +1,7 @@
 <div class="recent">
     <ul>
 <?php
+$simpleHTML = new SimpleHTMLDOM;
 foreach($activities as $a){
 ?>
         <li class="act_item" id="act_item_<?php echo $a->id;?>">
@@ -22,11 +23,17 @@ foreach($activities as $a){
                     </span>
                 </div>
                 <span class="profile">
-                    <?php echo $a->profile; ?>
+<?php
+if(!empty($a->profile)){
+    $profile = $simpleHTML->str_get_html($a->profile);
+    $txt = $profile->plaintext;
+    echo mb_substr($txt, 0, 300, 'UTF-8'); 
+}
+?>
                 </span>
             </div>
             <div class="ctime">
-                    <?php echo $a->start_time === null ? '待定' : $a->start_time; ?>
+                    <?php echo $a->start_time === null ? '待定' : substr($a->start_time,0,10); ?>
             </div>
         </li>
 <?php
@@ -34,12 +41,4 @@ foreach($activities as $a){
 ?>
     </ul>
 </div>
-
-<script>
-$(document).ready(function(){
-    $('.act_item').click(function(){
-        var id = $(this).attr("id").substr(9);
-        Nav.go('/activity/index/aid/'+id);
-    });
-});
-</script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/act_list.js"></script>

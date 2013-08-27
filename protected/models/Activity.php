@@ -63,7 +63,7 @@ class Activity extends CActiveRecord
 			array('profile', 'length', 'max'=>2000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, subject, type, profile, organizer_id', 'safe', 'on'=>'search'),
+			array('id, subject, type, profile, organizer_id, start_time', 'safe'),
 		);
 	}
 
@@ -90,7 +90,7 @@ class Activity extends CActiveRecord
 			'id' => 'ID',
 			'subject' => '活动主题',
             'type' => '活动类型',
-			'profile' => '活动简介<br><span class="label_gray">介绍下活动内容，活动地点，活动经费，活动目的等</span>',
+			'profile' => '活动内容&nbsp;<span class="label_gray">（介绍下活动内容，活动地点，活动经费，活动目的等）</span>',
 			'start_time' => '活动时间',
 			'organizer_id' => 'Organizer',
 		);

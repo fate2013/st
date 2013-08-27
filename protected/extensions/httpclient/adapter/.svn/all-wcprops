@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/adapter
+END
+EHttpClientAdapterCurl.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/adapter/EHttpClientAdapterCurl.php
+END
+EHttpClientAdapterSocket.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/adapter/EHttpClientAdapterSocket.php
+END
+EHttpClientAdapterStream.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/adapter/EHttpClientAdapterStream.php
+END
+EHttpClientException.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/adapter/EHttpClientException.php
+END
+EHttpClientAdapterInterface.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/adapter/EHttpClientAdapterInterface.php
+END
+EProxy.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/i.liebao.cn/!svn/ver/11/bucenter/trunk/protected/extensions/httpclient/adapter/EProxy.php
+END

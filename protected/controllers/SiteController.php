@@ -73,4 +73,39 @@ class SiteController extends Controller
 		$this->render('contact',array('model'=>$model));
 	}
 
+    public function actionUpload()
+    {
+        $file = $_FILES['upload']['tmp_name'];
+        $filename = $_FILES['upload']['name'];
+        $funcNum = $_GET['CKEditorFuncNum'];
+        $uid = Yii::app()->session['user']->id;
+        $path = Yii::app()->basePath.'/../images/'.$uid.'/'.$filename;
+        $url = '/images/'.$uid.'/'.$filename;
+        $message = '上传成功';
+        if(!is_dir(Yii::app()->basePath.'/../images/'.$uid)){
+            mkdir(Yii::app()->basePath.'/../images/'.$uid, 0775);
+        }
+        if(move_uploaded_file($file, $path))
+            echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>";
+        else
+            echo '上传失败！';
+    }
+
+    public function actionBrowse()
+    {
+        $uid = Yii::app()->session['user']->id;
+        $path = Yii::app()->basePath.'/../images/'.$uid;
+        $handle = opendir($path);
+        while (false !== ($file = readdir($handle))) {
+            $file = "/images/$uid/$file";
+            list($filesname,$kzm)=explode(".",$file);
+            if($kzm=="gif" or $kzm=="jpg" or $kzm=="JPG" or $kzm) {
+                if(!is_dir($file)){
+                    $array[]=$file;
+                }
+            }
+        }
+		$this->renderPartial('browse',array('files'=>$array));
+    }
+
 }

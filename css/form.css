@@ -36,6 +36,7 @@
 
 div.form
 {
+    margin: 20px 0 0;
 }
 
 div.form input,
@@ -158,6 +159,13 @@ div.wide.form label
 	width: 100px;
     top: 5px;
 }
+div.wide.form .editor label{
+    float: none;
+    width: 600px;
+    text-align:left;
+    margin: 0 0 13px 30px;
+}
+
 div.wide.form label.labelForRadio
 {
     top: 0;
@@ -173,11 +181,12 @@ div.wide.form .row2
     float: left;
 }
 
-div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
+div.wide.form .hint, div.wide.form .errorMessage
 {
 	clear: left;
 	padding-left: 110px;
 }
+div.wide.form .buttons{margin: 20px 0 0 10px}
 .label_gray{color:#999;font-weight:normal;}
 .ui-datepicker-year{border:blue}
 .ui-datepicker-month{border:blue}

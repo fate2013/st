@@ -16,6 +16,8 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'ext.httpclient.*',
+        'ext.SimpleHTMLDOM.SimpleHTMLDOM',
 	),
 
 	'modules'=>array(

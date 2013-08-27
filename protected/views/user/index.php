@@ -66,3 +66,4 @@ foreach($recentActs as $a){
 ?>
     </ul>
 </div>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/act_list.js"></script>
