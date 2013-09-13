@@ -35,8 +35,4 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Make dialogs simpler.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
-
-    config.language = 'zh-cn';
-    config.uiColor = '#6EAADC';
-    config.image_previewText = ' ';
 };

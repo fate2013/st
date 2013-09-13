@@ -3,10 +3,7 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
+$this->pageTitle=Yii::app()->name . ' - 个人资料';
 ?>
 
 <h1><?php echo $user->displayName(); ?> 个人资料</h1>
@@ -37,12 +34,6 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($model,'sex'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->fileField($model,'image'); ?>
-		<?php echo $form->error($model,'image'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('提交'); ?>
 	</div>
@@ -51,13 +42,17 @@ $this->breadcrumbs=array(
 </div><!-- form -->
 
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery-ui.custom.min.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.Jcrop.min.css" />
 <script src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.custom.min.js'></script>
+<script src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Jcrop.min.js'></script>
 <script>
-var year = new Date().getFullYear();
-$("#UserProfile_birthday").datepicker({
-    dateFormat: "yy-mm-dd",
-    changeYear: true,
-    changeMonth: true,
-    yearRange: "1950:"+year
-});
+$(document).ready(function(){
+    var year = new Date().getFullYear();
+    $("#UserProfile_birthday").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeYear: true,
+        changeMonth: true,
+        yearRange: "1950:"+year
+    });
+}
 </script>

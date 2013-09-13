@@ -186,7 +186,11 @@ div.wide.form .hint, div.wide.form .errorMessage
 	clear: left;
 	padding-left: 110px;
 }
-div.wide.form .buttons{margin: 20px 0 0 10px}
+div.wide.form .buttons{margin: 10px 0 0 10px}
 .label_gray{color:#999;font-weight:normal;}
 .ui-datepicker-year{border:blue}
 .ui-datepicker-month{border:blue}
+.formout{width:800px;}
+.formwrap{width:500px; margin: 0 auto;}
+.register a{float:right;color:#2064A9;text-decoration: none;}
+.register a:hover{text-decoration: underline;}

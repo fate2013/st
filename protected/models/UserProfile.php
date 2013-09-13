@@ -4,6 +4,9 @@ class UserProfile extends CActiveRecord
 
     public $image;
 
+    const DEFAULT_PORTRAIT_IMG = '/images/tx.png';
+    const DEFAULT_PORTRAIT_WOMAN_IMG = '/images/tx.png';
+
     public static function model($className=__CLASS__)
     {
         return parent::model($className);

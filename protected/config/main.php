@@ -52,6 +52,7 @@ return array(
 			'username' => 'zhangkh',
 			'password' => '123456',
 			'charset' => 'utf8',
+            'enableProfiling' => true,
 		),
         'session' => array(
             'autoStart' => true,
@@ -65,7 +66,7 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
+                    'levels'=>'error, warning, profile',
 				),
 				// uncomment the following to show log messages on web pages
 				/*

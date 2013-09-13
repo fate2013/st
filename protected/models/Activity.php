@@ -12,6 +12,9 @@
  */
 class Activity extends CActiveRecord
 {
+    const AUTH_EVERYONE = 0;
+    const AUTH_NEED_APPROVAL = 1;
+    const AUTH_ONLY_INVITED = 2;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -60,10 +63,10 @@ class Activity extends CActiveRecord
 			array('subject, type, organizer_id', 'required'),
 			array('organizer_id', 'numerical', 'integerOnly'=>true),
 			array('subject', 'length', 'max'=>300),
-			array('profile', 'length', 'max'=>2000),
+			array('location', 'length', 'max'=>500),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, subject, type, profile, organizer_id, start_time', 'safe'),
+			array('id, subject, type, profile, organizer_id, start_time, province, city, location, auth', 'safe'),
 		);
 	}
 
@@ -77,7 +80,9 @@ class Activity extends CActiveRecord
 		return array(
             'organizer' => array(self::BELONGS_TO, 'User', 'organizer_id'),
             'user_activities' => array(self::HAS_MANY, 'UserActivity', 'aid'),
-            'parts' => array(self::HAS_MANY, 'User', array('uid' => 'id'), 'through'=>'user_activities'),
+            'parts' => array(self::HAS_MANY, 'User', array('uid' => 'id'), 'through'=>'user_activities', 'select'=>'parts.*,user_activities.status as status,user_activities.msg as msg','group'=>'aid,uid'),
+            'userStatus' => array(self::HAS_ONE, 'UserActivity', 'aid', 'on'=>'uid='.Yii::app()->session['user']->id, 'select'=>'user_activities.status'),
+            'comments' => array(self::HAS_MANY, 'Comment', 'aid'),
 		);
 	}
 
@@ -93,6 +98,8 @@ class Activity extends CActiveRecord
 			'profile' => '活动内容&nbsp;<span class="label_gray">（介绍下活动内容，活动地点，活动经费，活动目的等）</span>',
 			'start_time' => '活动时间',
 			'organizer_id' => 'Organizer',
+            'province' => '地点',
+            'auth' => '验证方式',
 		);
 	}
 
@@ -117,4 +124,9 @@ class Activity extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function afterFind(){
+        $this->start_time = substr($this->start_time, 0, 16);
+        parent::afterFind();
+    }
 }

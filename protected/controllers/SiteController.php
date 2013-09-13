@@ -21,16 +21,42 @@ class SiteController extends Controller
 		);
 	}
 
+    public function filters()
+    {
+        return array(
+            'needLogin - index,login,register,captcha',
+        );
+    }
+
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
 	public function actionIndex()
 	{
-        $activities = Activity::model()->recently()->findAll();
-        $this->render('index',array(
-            'activities' => $activities,
-        ));
+        if(Yii::app()->session['user']){
+            $this->redirect('/user/index');
+        }
+		$model=new LoginForm;
+
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+
+		// collect user input data
+		if(isset($_POST['LoginForm']))
+		{
+			$model->attributes=$_POST['LoginForm'];
+			// validate user input and redirect to the previous page if valid
+			if($model->validate() && $model->login()){
+				$this->redirect('/user/myrelease');
+            }
+		}
+		// display the login form
+		$this->renderPartial('index',array('model'=>$model));
 	}
 
 	/**

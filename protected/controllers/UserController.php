@@ -13,11 +13,20 @@ class UserController extends Controller
 		);
 	}
 
+    public function filters()
+    {
+        return array(
+            'needLogin - login,register,captcha',
+        );
+    }
+
 	public function actionIndex()
 	{
         $activities = Activity::model()->recently()->findAll('organizer_id=:organizer_id',array(':organizer_id'=>Yii::app()->session['user']->id));
         $user = User::model()->findByPk(Yii::app()->session['user']->id);
         $relatedActs = $user->related_acts;
+
+        $this->title = '参与的活动';
 
         $recentActs = Activity::model()->recently()->findAll();
         $this->render('index',array(
@@ -29,18 +38,36 @@ class UserController extends Controller
 
     public function actionMyRelease()
     {
-        $activities = Activity::model()->recently(20)->findAll('organizer_id=:organizer_id',array(':organizer_id'=>Yii::app()->session['user']->id));
+        $time = isset($_REQUEST['time'])? $_REQUEST['time'] : false;
+
+        $conditions = 'organizer_id=:organizer_id';
+        $params = array(':organizer_id'=>Yii::app()->session['user']->id);
+        if($time !== false && $time !== 'all'){
+            switch($time){
+            case 'near':
+                $conditions .= ' and unix_timestamp(start_time)>unix_timestamp(now())+86400*7';
+                break;
+            case 'today':
+                $conditions .= ' and to_days(start_time)=to_days(now())';
+                break;
+            case 'weekend':
+                $conditions .= ' AND dayofweek(FROM_UNIXTIME(start_time)) in (1,7) AND YEARWEEK(FROM_UNIXTIME(start_time,"%Y-%m-%d")) = YEARWEEK(now())';
+                break;
+            }
+        }
+        $this->title = '发布的活动';
+        $activities = Activity::model()->recently(20)->with('parts','organizer','userStatus')->findAll($conditions, $params);
         $this->render('my_release',array(
             'activities' => $activities,
-            'typelist' => ActTypeList::$list,
         ));
     }
 
     public function actionMypart()
     {
         $user = User::model()->findByPk(Yii::app()->session['user']->id);
-        $activities = $user->related_acts(array('limit'=>20));
+        $activities = $user->with('parts','organizer','userStatus')->related_acts(array('limit'=>20));
 
+        $this->title = '参与的活动';
         $this->render('my_part',array(
             'activities' => $activities,
         ));
@@ -55,7 +82,8 @@ class UserController extends Controller
         }
     }
 
-    public function actionUpdateProfile(){
+    public function actionUpdateProfile()
+    {
         $uid = Yii::app()->session['user']->id;
         $profile = UserProfile::model()->findByPk($uid);
         if(empty($profile)){
@@ -71,13 +99,35 @@ class UserController extends Controller
             }
             $profile->age = date('Y') - substr($profile->birthday, 0, 4);
             if($profile->saveProfile()){
-                $this->redirect(Yii::app()->user->returnUrl);
+                $this->redirect('/user/myrelease');
             }
         }
         $this->render('update_profile', array(
             'model'=>$profile,
             'user' => Yii::app()->session['user'],
         ));
+    }
+
+    public function actionPortrait()
+    {
+        if(isset($_GET['type'])){
+            $img = file_get_contents('php://input');
+            $filename = time().chr(97+rand(0,25)).chr(97+rand(0,25)).chr(97+rand(0,25)).'.jpg';
+            $filepath = Yii::app()->basePath."/../images/portraits/{$filename}";
+            file_put_contents($filepath, $img);
+            $src = Yii::app()->session['user']->profile->portrait;
+            unlink(Yii::app()->basePath."/..{$src}");
+            Yii::app()->session['user']->profile->portrait = "/images/portraits/{$filename}";
+            $result = array();
+            if(Yii::app()->session['user']->profile->save()){
+                $result['status'] = 1;
+            } else {
+                $result['status'] = 0;
+            }
+            echo CJSON::encode($result);
+            Yii::app()->end();
+        }
+        $this->render('portrait');
     }
 
     public function actionRegister()
@@ -104,7 +154,7 @@ class UserController extends Controller
             }
         }
 
-        $this->render('register',array('model'=>$model));
+        $this->renderPartial('register',array('model'=>$model));
     }
 
 	public function actionLogin()
@@ -124,7 +174,7 @@ class UserController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
-				$this->redirect(Yii::app()->user->returnUrl);
+				$this->redirect('/user/myrelease');
             }
 		}
 		// display the login form

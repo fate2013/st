@@ -15,6 +15,8 @@ class User extends CActiveRecord
 
     public $password2;
 	public $verifyCode;
+    public $status;
+    public $msg;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -49,7 +51,7 @@ class User extends CActiveRecord
 			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, realname', 'safe', 'on'=>'search'),
+			array('id, name, realname', 'safe'),
 		);
 	}
 
@@ -63,7 +65,9 @@ class User extends CActiveRecord
 		return array(
             'profile'=>array(self::HAS_ONE, 'UserProfile', 'id'),
             'user_activities' => array(self::HAS_MANY, 'UserActivity', 'uid'),
-            'related_acts'=>array(self::HAS_MANY, 'Activity', array('aid'=>'id'), 'through'=>'user_activities', 'order'=>'created_at desc'),
+            'related_acts' => array(self::HAS_MANY, 'Activity', array('aid'=>'id'), 'through'=>'user_activities', 'order'=>'created_at desc'),
+            'user_friends' => array(self::HAS_MANY, 'UserFriends', 'uid'),
+            'friends' => array(self::HAS_MANY, 'User', array('fid'=>'id'), 'through'=>'user_friends'),
 		);
 	}
 
