@@ -40,7 +40,7 @@
         <?php $this->widget('zii.widgets.CMenu',array(
             'items'=>array(
                 array('label'=>'首页', 'url'=>array('/activity/list')),
-                array('label'=>'活动', 'url'=>array('/user/myrelease')),
+                array('label'=>'活动', 'url'=>array('/activity/list/channel/myrelease')),
                 array('label'=>'站点介绍', 'url'=>array('/site/page', 'view'=>'about')),
                 array('label'=>'联系我们', 'url'=>array('/site/contact')),
             ),
@@ -66,10 +66,11 @@ $this->pageTitle=Yii::app()->name;
 <div class="main">
     <div class='left_content'>
         <div class='portrait'>
-            <img class='portrait_img' width='120px' height='120px' src='<?php echo Yii::app()->session['user']->profile->portrait;?>' />
+            <a href='/user/portrait' style='float:left'><img class='portrait_img' width='120px' height='120px' src='<?php echo Yii::app()->session['user']->profile->portrait;?>' /></a>
         </div>
         <div class='portrait_name'>
-            <?php echo Yii::app()->session['user']->displayname();?>
+            <span><?php echo Yii::app()->session['user']->displayname();?></span>
+            <input type="text" style="display:none;background:none;width:60px;border:1px solid #65B1EB;height:17px;font-size:12px;" />
         </div>
         <div class='left_nav'>
             <div class='top_bar'>
@@ -77,7 +78,7 @@ $this->pageTitle=Yii::app()->name;
             </div>
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
-                    array('label'=>'发布的活动', 'url'=>array('/user/myrelease')),
+                    array('label'=>'发布的活动', 'url'=>array('/activity/list/channel/myrelease')),
                     array('label'=>'参与的活动', 'url'=>array('/user/mypart')),
                     array('label'=>'近期活动列表', 'url'=>array('/activity/list')),
                     array('label'=>'创建活动', 'url'=>array('/activity/create')),

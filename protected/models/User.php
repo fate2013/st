@@ -109,7 +109,7 @@ class User extends CActiveRecord
 
     public function displayName()
     {
-        return $this->realname? $this->realname : $this->name;
+        return $this->name? $this->name : $this->realname;
     }
 
 }

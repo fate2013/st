@@ -1,3 +1,4 @@
+var TIME_INTER = 300;
 $(document).ready(function(){
     $('.act_item').click(function(){
         var id = $(this).attr("id").substr(9);
@@ -64,10 +65,24 @@ $(document).ready(function(){
         $.get('/activity/commentcreate', {aid:aid,cid:cid,content:content}, function(data){
             if(data != -1){
                 textarea.val('');
+                div.fadeOut(TIME_INTER);
                 ul.prepend(getLi(data,aid));
-                div.fadeOut(1000);
             } else {
                 alert('评论失败');
+            }
+        }, 'json');
+    });
+
+    $('.act_item').on('click', '.delcomm', function(){
+        var id = $(this).attr('id');
+        var arrtmp = id.split('_');
+        var cid = arrtmp[1];
+        var comm = $(this).parents('li:eq(0)');
+        $.get('/activity/delcomment', {cid:cid}, function(data){
+            if(data==0){
+                comm.fadeOut(TIME_INTER);
+            } else {
+                alert('删除评论失败');
             }
         }, 'json');
     });
@@ -152,7 +167,7 @@ function getLi(ele, aid){
     }
     li += '</a>：'+ele['content']+'</div><span class="comment_time">'+ele['createtime']+'</span><div class="comment_tool"><span><a id="replyto_'+aid+'_'+ele['cid']+'" href="javascript:void(0);" class="replyto">回复</a></span>';
     if(ele['uid'] == user.id){
-        li += '<span><a id="delcomm_'+ele['cid']+'" href="javascript:void(0);">删除</a><i>|</i></span></div></li>';
+        li += '<span><a id="delcomm_'+ele['cid']+'" class="delcomm" href="javascript:void(0);">删除</a><i>|</i></span></div></li>';
     }
     return li;
 }

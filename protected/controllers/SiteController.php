@@ -35,7 +35,7 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
         if(Yii::app()->session['user']){
-            $this->redirect('/user/index');
+            $this->redirect('/activity/list');
         }
 		$model=new LoginForm;
 

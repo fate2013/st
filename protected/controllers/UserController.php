@@ -189,4 +189,17 @@ class UserController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+    public function actionUpdatename()
+    {
+        $name = $_REQUEST['name'];
+        $user = Yii::app()->session['user'];
+        $user->name = $name;
+        if($user->save(false)){
+            Yii::app()->session['user']->name = $name;
+            echo 0;
+        } else {
+            echo 1;
+        }
+    }
 }

@@ -34,7 +34,7 @@ body{
 #logo{
     font-size: 200%;
     margin: 10px 0 0 20px;
-    width: 138px;
+    width: 140px;
     float: left;
     /*box-shadow: 0 0 10px 2px #EE6600;*/
 }
@@ -460,7 +460,7 @@ div.act{padding:20px 25px 0px;}
 }
 .left_content .portrait{margin:20px 28px 10px;width:140px;height:140px;background:#F7FcEd;border:1px solid #ccc;-moz-border-radius: 6px;-webkit-border-radius: 6px;border-radius: 6px;}
 .left_content .portrait_img{margin:9px;border:1px solid #959595}
-.left_content .portrait_name{width:200px;height:30px;text-align:center;font-family:黑体;color:#2064a9;font-weight:bold;}
+.left_content .portrait_name,.portrait_name input{width:200px;height:30px;text-align:center;font-family:黑体;color:#2064a9;font-weight:bold;}
 .left_nav .top_bar{width:180px;height:24px;background:#444;border:1px solid #444;color:white;padding:6px 0 0 20px;margin-left:-1px;cursor:pointer;position:relative;z-index: 99;
 }
     
@@ -476,6 +476,7 @@ div.act{padding:20px 25px 0px;}
 .act_filter a{margin:0 15px 0 0;font-size:14px;font-weight:bold;border:1px solid #999;border-radius: 3px;color:#2064A9;padding:2px;background:#ccc;cursor:pointer;text-decoration:none;}
 .act_filter a:hover{background:#F0FFFF;}
 .act_filter a.active{background:#60a0d6;color:white;}
+.filter_line{height:27px;line-height:27px;}
 .content_title{color:#FFF;font-size:15px;font-weight:bold;margin:6px 0 0 18px;float:left;text-shadow: 1px 1px 0 #666}
 .new_act{width:100px;height:20px;line-height:20px;background:green;-webkit-border-radius: 20px;border-radius: 20px;text-align:center;margin:5px 10px 0 0;float:right;box-shadow: 0 1px 2px #666;border:1.5px solid #aaa;color:white;cursor:pointer;
     background: -moz-linear-gradient(top, #7CFC00 0%, #6B8E23 100%);

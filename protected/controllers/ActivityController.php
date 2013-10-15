@@ -22,7 +22,34 @@ class ActivityController extends Controller
 
     public function actionList()
     {
-        $activities = Activity::model()->recently(24)->with('parts','organizer','userStatus')->findAll();
+        $channel = isset($_REQUEST['channel'])? $_REQUEST['channel'] : false;
+        $time = isset($_REQUEST['time'])? $_REQUEST['time'] : false;
+        $type = isset($_REQUEST['type'])? $_REQUEST['type'] : false;
+        if($channel === false || $channel == 'list'){
+            $conditions = '';
+            $params = array();
+        } elseif($_REQUEST['channel'] == 'myrelease'){
+            $conditions = 'organizer_id=:organizer_id';
+            $params = array(':organizer_id'=>Yii::app()->session['user']->id);
+        }
+        if($time !== false && $time !== 'all'){
+            switch($time){
+            case 'near':
+                $conditions .= ' and unix_timestamp(start_time)>unix_timestamp(now())+86400*7';
+                break;
+            case 'today':
+                $conditions .= ' and to_days(start_time)=to_days(now())';
+                break;
+            case 'weekend':
+                $conditions .= ' AND dayofweek(FROM_UNIXTIME(start_time)) in (1,7) AND YEARWEEK(FROM_UNIXTIME(start_time,"%Y-%m-%d")) = YEARWEEK(now())';
+                break;
+            }
+        }
+        if($type !== false && $type !== 'all'){
+            $conditions .= ' and type=:type';
+            $params[':type'] = $type;
+        }
+        $activities = Activity::model()->recently(24)->with('parts','organizer','userStatus')->findAll($conditions, $params);
         $this->title = '活动列表';
         $this->render('list',array(
             'activities' => $activities,
@@ -178,5 +205,15 @@ class ActivityController extends Controller
             );
         }
         echo CJSON::encode($result);
+    }
+
+    public function actionDelcomment()
+    {
+        $cid = $_REQUEST['cid'];
+        if(Comment::model()->deleteByPk($cid)){
+            echo 0;
+        } else {
+            echo 1;   
+        }
     }
 }
