@@ -54,5 +54,5 @@ $(document).ready(function(){
         changeMonth: true,
         yearRange: "1950:"+year
     });
-}
+});
 </script>
