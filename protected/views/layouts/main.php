@@ -66,7 +66,7 @@ $this->pageTitle=Yii::app()->name;
 <div class="main">
     <div class='left_content'>
         <div class='portrait'>
-            <a href='/user/portrait' style='float:left'><img class='portrait_img' width='120px' height='120px' src='<?php var_dump(Yii::app()->session['user']->profile);echo Yii::app()->session['user']->profile? Yii::app()->session['user']->profile->portrait : '/images/tx.png';?>' /></a>
+            <a href='/user/portrait' style='float:left'><img class='portrait_img' width='120px' height='120px' src='<?php echo Yii::app()->session['user']->profile && Yii::app()->session['user']->profile->portrait? Yii::app()->session['user']->profile->portrait : '/images/tx.png';?>' /></a>
         </div>
         <div class='portrait_name'>
             <span><?php echo Yii::app()->session['user']->displayname();?></span>
