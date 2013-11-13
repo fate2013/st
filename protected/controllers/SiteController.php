@@ -24,7 +24,7 @@ class SiteController extends Controller
     public function filters()
     {
         return array(
-            'needLogin - index,login,register,captcha',
+            'needLogin - index,login,register,captcha,indexold',
         );
     }
 
@@ -59,6 +59,32 @@ class SiteController extends Controller
 		$this->renderPartial('index',array('model'=>$model));
 	}
 
+    public function actionIndexold()
+	{
+        if(Yii::app()->session['user']){
+            $this->redirect('/activity/list');
+        }
+		$model=new LoginForm;
+
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+
+		// collect user input data
+		if(isset($_POST['LoginForm']))
+		{
+			$model->attributes=$_POST['LoginForm'];
+			// validate user input and redirect to the previous page if valid
+			if($model->validate() && $model->login()){
+				$this->redirect('/user/myrelease');
+            }
+		}
+		// display the login form
+		$this->renderPartial('index_old',array('model'=>$model));
+	}
 	/**
 	 * This is the action to handle external exceptions.
 	 */

@@ -5,69 +5,47 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/login.css" />
 
     <script src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js'></script>
-    <script src='<?php echo Yii::app()->request->baseUrl; ?>/js/index.js'></script>
+    <script src='<?php echo Yii::app()->request->baseUrl; ?>/js/login.js'></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
 
-<div class="topbar">
-    <div class="header_wrap">
-        <div class="welcome_bar">Welcome to <span class="app_name"><?php echo CHtml::encode(Yii::app()->name); ?></span></div>
-        <?php $this->widget('zii.widgets.CMenu',array(
-            'items'=>array(
-                array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest)
-            ),
-        )); ?>
-        </div>
-    </div>
-<div id="header">
-    <div class="header_wrap">
-        <div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-    </div>
-</div><!-- header -->
-
-<div class="container" id="page">
-	<!--
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?>
-	<?php endif?>
-    -->
 <?php
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<div class="main">
-
-<?php
-/* @var $this SiteController */
-/* @var $model LoginForm */
-/* @var $form CActiveForm  */
-
-$this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
-?>
-<div class="formout">
-<div class="formwrap">
-<div class="register">
-    <a href='/user/register'>立即注册</a>
+<div class='topbar'>
+    <div class='topcontent'>
+        <div class='logo'>
+        </div>       
+        <div class='input'>
+            <img src='/images/search.png' />
+            <input type='text' />
+        </div>
+        <div class='nav'>
+            <ul>
+                <li>首页
+                <li>活动
+                <li>站点
+                <li>联系我们
+            </ul>
+        </div>
+    </div>
 </div>
-<h1>Login</h1>
 
+<div class="main">
+    <div class='banner'>
+        <img src='/images/banner.png' />
+        <div>
+            分享让生活更精彩！
+        </div>
+    </div>
 
-<p>Please fill out the following form with your login credentials:</p>
-
-<div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -76,61 +54,54 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <div class='login'>
+        <div class='logintop'>
+        </div>
+        <div class='loginframe'>
+            <div class='name_pic'></div>
+            <div class='pass_pic'></div>
+            <div class="row">
+                <?php echo $form->textField($model,'username', array('tabindex'=>1, 'autofocus'=>true, 'class'=>'input_text', 'placeholder'=>'用户名', 'autocomplete'=>'off', 'required'=>true)); ?>
+            </div>
+            <div class="row">
+                <?php echo $form->passwordField($model,'password', array('tabindex'=>2, 'class'=>'input_text', 'placeholder'=>'密码', 'autocomplete'=>'off', 'required'=>true)); ?>
+            </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username', array('tabindex'=>1, 'autofocus'=>true)); ?>
-		<?php echo $form->error($model,'username'); ?>
-	</div>
+            <?php if(CCaptcha::checkRequirements()): ?>
+            <div class="row">
+                <div>
+                <?php echo $form->textField($model,'verifyCode', array('tabindex'=>3, 'class'=>'input_text captcha', 'autocomplete'=>'off', 'placeholder'=>'请输入验证码', 'required'=>true)); ?>
+                <?php $this->widget('CCaptcha'); ?>
+                </div>
+            </div>
+            <?php endif; ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password', array('tabindex'=>2)); ?>
-		<?php echo $form->error($model,'password'); ?>
-	</div>
+            <div class='logintool'>
+                <?php echo $form->error($model,'username'); ?>
+                <?php echo $form->error($model,'password'); ?>
+                <?php echo $form->error($model,'verifyCode'); ?>
+                <input type='checkbox' id='autologin' />
+                <label for='autologin'>下次自动登录</label>
+                <div class='submit'>
+                    <a href='javascript:void(0);'>忘记密码</a>
+                    <input type='submit' value='登  录' />
+                </div>
+            </div>
 
-    <?php if(CCaptcha::checkRequirements()): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-		<div>
-		<?php $this->widget('CCaptcha'); ?>
-        <br />
-		<?php echo $form->textField($model,'verifyCode', array('tabindex'=>3, 'autocomplete'=>'off')); ?>
-		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
-		<?php echo $form->error($model,'verifyCode'); ?>
-	</div>
-	<?php endif; ?>
+            <div class='regframe'>
+                <span class='w101'>还没有帐号？<a href='#'>立即注册！</a>或使用以下账号登录</span>
+                <div class='share'>
+                </div>
+                <div class='regsubmit'>
+                    <input type='submit' value='立 即 注 册' />
+                </div>
+            </div>
+        </div>
 
-
-	<div class="row rememberMe">
-		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
-		<?php echo $form->error($model,'rememberMe'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
-	</div>
+    </div>
 
 <?php $this->endWidget(); ?>
-</div><!-- form -->
+
 </div>
-</div>
-</div>
-
-	<div class="clear"></div>
-
-
-</div><!-- page -->
-
-<div id="footer">
-    Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-    All Rights Reserved.<br/>
-    <?php echo Myii::powered(); ?>
-</div><!-- footer -->
-
 </body>
 </html>

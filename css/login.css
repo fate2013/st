@@ -1,0 +1,212 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/images/background.jpg') center no-repeat;
+    background-size: cover, 100% auto;
+    overflow: hidden;
+}
+ul{
+    margin: 0;
+}
+li{
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin: 0;
+	padding: 0;
+    float: left;
+}
+.topbar{
+    height: 49px;
+    width: 100%;
+    background: url('/images/headerline.jpg') repeat-x;
+}
+.topcontent{
+    margin: 0 auto;
+    width: 900px;
+}
+.logo{
+    width: 200px;
+    height: 36px;
+    background: url('/images/logo.png') no-repeat transparent;
+    float: left;
+    margin: 12px 0 0 20px;
+}
+.topcontent .input{
+    width: 100px;
+    float: left;
+    margin: 19px 0 0 270px;
+    position: relative;
+}
+.topcontent .input img{
+    position: absolute;
+    right: 2px;
+    top: 5px;
+}
+.topcontent .input input{
+    width: 100px;
+    height: 21px;
+    float: left;
+    background: #383E4A;
+    border: 0;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    padding: 0 0 0 5px;
+}
+.nav{
+    float: right;
+    margin: 22px 20px 0 0;
+}
+.nav li{
+    margin: 0 9px;
+    color: #898D95;
+}
+.login{
+    float: right;
+    width: 430px;
+    height: 500px;
+    margin: 148px 0 0 0;
+}
+.logintop{
+    background: url('/images/line.png') center no-repeat;
+    height: 10px;
+    width: 430px;
+}
+.main{
+    margin: 0 auto;
+    height: 100%;
+    width: 1000px;
+}
+.banner{
+    float: left;
+    width: 520px;
+    margin: 104px 0 0 0;
+}
+.banner div{
+    color: #E0DEE0;
+    font-size: 24px;
+    margin: 20px auto 0;
+    width: 249px;
+}
+.loginframe{
+    background: #FFFFFF;
+    width: 100%;
+    height: 380px;
+    margin: -3px 0 0 0;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+}
+.loginframe input.input_text{
+    box-shadow: 1px 1px 5px rgb(150,150,150) inset;
+    border: 1px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: #F1F1F1;
+    height: 35px;
+    margin: 23px 44px 0;
+    width: 298px;
+    padding: 0 0 0 44px;
+    font-size: 20px;
+    color: #666;
+}
+.loginframe input.captcha{
+    width: 180px;
+    margin-right: 0;
+    padding-left: 10px;
+}
+#yw0{
+    margin: 8px 0 0 10px;
+    vertical-align: bottom;
+}
+.name_pic{
+    background: url('/images/user-icon.png') center no-repeat;
+    width: 30px;
+    height: 30px;
+    left: 49px;
+    position: absolute;
+    top: 26px;
+}
+.pass_pic{
+    background: url('/images/pass-icon.png') center no-repeat;
+    width: 30px;
+    height: 30px;
+    left: 49px;
+    position: absolute;
+    top: 89px;
+}
+.logintool{
+    margin: 19px 0 0 44px;
+    color: #7c7c7c;
+    font-size: 14px;
+    padding-bottom: 15px;
+    width: 341px;
+    border-bottom: 1px solid #CCCCCC;
+}
+.logintool input{
+    margin: 0;
+}
+.logintool .submit{
+    display: inline;
+    margin: 0 0 0 44px;
+}
+.logintool .submit a{
+    color: #7c7c7c;
+    text-decoration: none;
+}
+.logintool .submit input{
+    width: 116px;
+    margin: 0 0 0 15px;
+    background: #FFCA68;
+    height: 33px;
+    vertical-align: bottom;
+    border: 0;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 20px;
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+.regframe{
+    padding: 19px 0 0 52px;
+    color: #7c7c7c;
+    font-size: 14px;
+}
+.regframe .w101{
+    width: 154px;
+    line-height: 25px;
+    float: left;
+}
+.regframe a{
+    text-decoration: none;
+    color: #243659;
+}
+.regframe .share{
+    float: left;
+}
+.regsubmit{
+    float: right;
+    margin: 5px 46px 0 0;
+}
+.regsubmit input{
+    background: #494949;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 0;
+    color: #FFFFFF;
+    font-size: 20px;
+    height: 35px;
+    width: 135px;
+    padding: 0 0 2px 0;
+}
+.errorMessage{
+    color: #FF0000;
+}
