@@ -89,9 +89,11 @@ $this->pageTitle=Yii::app()->name;
             </div>
 
             <div class='regframe'>
-                <span class='w101'>还没有帐号？<a href='/user/register'>立即注册！</a>或使用以下账号登录</span>
-                <div class='share'>
-                </div>
+                <span class='w101'>还没有帐号？<a href='/user/register'>立即注册！</a></span>
+            </div>
+            <div class='share'>
+                <span>分享到以下平台：</span>
+                <div class="bshare-custom icon-medium-plus"><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到微信" class="bshare-weixin"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=3a10553c-ab40-443d-9127-fa75cd643be1&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
             </div>
             <div class='regsubmit' onclick='javascript:location.href="/user/register";return false;'>
                 立即注册

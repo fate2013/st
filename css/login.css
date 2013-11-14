@@ -180,6 +180,9 @@ li{
     padding: 19px 0 0 52px;
     color: #7c7c7c;
     font-size: 14px;
+    float: left;
+    height: 30px;
+    width: 154px;
 }
 .regframe .w101{
     width: 154px;
@@ -189,9 +192,6 @@ li{
 .regframe a{
     text-decoration: none;
     color: #243659;
-}
-.regframe .share{
-    float: left;
 }
 .regsubmit{
     float: right;
@@ -211,8 +211,19 @@ li{
     text-align: center;
     letter-spacing: 20px;
 }
-.regsubmit input{
-}
 .errorMessage{
     color: #FF0000;
+}
+.share{
+    width: 170px;
+    height: 53px;
+    float: left;
+    margin: 16px 0 0 31px;
+}
+.share span{
+    color: #7c7c7c;
+    font-size: 14px;
+}
+.bshare-custom.icon-medium-plus, .bshare-custom.icon-large{
+    margin-top: 7px;
 }
