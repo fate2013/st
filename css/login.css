@@ -1,6 +1,7 @@
 html{
     height: 100%;
     width: 100%;
+    font-family: '宋体';
 }
 body{
     padding: 0;
@@ -147,7 +148,7 @@ li{
     color: #7c7c7c;
     font-size: 14px;
     padding-bottom: 15px;
-    width: 341px;
+    width: 386px;
     border-bottom: 1px solid #CCCCCC;
 }
 .logintool input{
@@ -163,7 +164,7 @@ li{
 }
 .logintool .submit input{
     width: 116px;
-    margin: 0 0 0 15px;
+    margin: 0 0 0 5px;
     background: #FFCA68;
     height: 33px;
     vertical-align: bottom;
