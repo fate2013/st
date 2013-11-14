@@ -92,9 +92,9 @@ $this->pageTitle=Yii::app()->name;
                 <span class='w101'>还没有帐号？<a href='/user/register'>立即注册！</a>或使用以下账号登录</span>
                 <div class='share'>
                 </div>
-                <div class='regsubmit'>
-                    <input type='submit' value='立 即 注 册' onclick='javascript:location.href="/user/register";return false;' />
-                </div>
+            </div>
+            <div class='regsubmit' onclick='javascript:location.href="/user/register";return false;'>
+                立即注册
             </div>
         </div>
 
