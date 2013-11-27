@@ -3,7 +3,7 @@ body{
 	padding: 0;
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-    background: url('/images/bg2.jpg') 0 -10px fixed;
+    background: url('/images/bg2.jpg') 0 -85px fixed;
     background-size: cover, 100% auto;
 }
 ul{
