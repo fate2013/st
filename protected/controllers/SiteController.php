@@ -24,7 +24,7 @@ class SiteController extends Controller
     public function filters()
     {
         return array(
-            'needLogin - index,login,register,captcha,indexold',
+            'needLogin - index,login,register,captcha,indexold,test',
         );
     }
 
@@ -158,6 +158,11 @@ class SiteController extends Controller
             }
         }
 		$this->renderPartial('browse',array('files'=>$array));
+    }
+
+    public function actionTest()
+    {
+        echo 'aaaa';
     }
 
 }

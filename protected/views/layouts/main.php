@@ -21,35 +21,24 @@
 </head>
 
 <body>
-
-<div class="topbar">
-    <div class="header_wrap">
-        <div class="welcome_bar">Welcome to <span class="app_name"><?php echo CHtml::encode(Yii::app()->name); ?></span></div>
-        <?php $this->widget('zii.widgets.CMenu',array(
-            'items'=>array(
-                array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest)
-            ),
-        )); ?>
+<div class='topbar'>
+    <div class='topcontent'>
+        <div class='logo'>
+        </div>       
+        <div class='input'>
+            <img src='/images/search.png' />
+            <input type='text' />
+        </div>
+        <div class='nav'>
+            <ul>
+                <li>首页
+                <li>活动
+                <li>站点
+                <li>联系我们
+            </ul>
         </div>
     </div>
-<div id="header">
-    <div class="header_wrap">
-        <div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-        <div id="mainmenu">
-        <?php $this->widget('zii.widgets.CMenu',array(
-            'items'=>array(
-                array('label'=>'首页', 'url'=>array('/activity/list')),
-                array('label'=>'活动', 'url'=>array('/activity/list/channel/myrelease')),
-                array('label'=>'站点介绍', 'url'=>array('/site/page', 'view'=>'about')),
-                array('label'=>'联系我们', 'url'=>array('/site/contact')),
-            ),
-            'firstItemCssClass'=>'first',
-            'lastItemCssClass'=>'last',
-        )); ?>
-        </div><!-- mainmenu -->
-    </div>
-</div><!-- header -->
+</div>
 
 <div class="container" id="page">
 	<!--
@@ -66,33 +55,35 @@ $this->pageTitle=Yii::app()->name;
 <div class="main">
     <div class='left_content'>
         <div class='portrait'>
-            <a href='/user/portrait' style='float:left'><img class='portrait_img' width='120px' height='120px' src='<?php echo Yii::app()->session['user']->profile && Yii::app()->session['user']->profile->portrait? Yii::app()->session['user']->profile->portrait : '/images/tx.png';?>' /></a>
+            <a href='/user/portrait' style='float:left'><img class='portrait_img' width='136px' height='136px' src='<?php echo Yii::app()->session['user']->profile && Yii::app()->session['user']->profile->portrait? Yii::app()->session['user']->profile->portrait : '/images/tx.png';?>' /></a>
         </div>
         <div class='portrait_name'>
             <span><?php echo Yii::app()->session['user']->displayname();?></span>
             <input type="text" style="display:none;background:none;width:60px;border:1px solid #65B1EB;height:17px;font-size:12px;" />
         </div>
         <div class='left_nav'>
+            <hr />
             <div class='top_bar'>
                 活动列表
             </div>
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
-                    array('label'=>'发布的活动', 'url'=>array('/activity/list/channel/myrelease')),
-                    array('label'=>'参与的活动', 'url'=>array('/user/mypart')),
-                    array('label'=>'近期活动列表', 'url'=>array('/activity/list')),
-                    array('label'=>'创建活动', 'url'=>array('/activity/create')),
+                    array('label'=>'发布的活动', 'url'=>array('/activity/list/channel/myrelease'),'active'=>$this->id=='activity'&&isset($_REQUEST['channel'])&&$_REQUEST['channel']=='myrelease'?true:false),
+                    array('label'=>'参与的活动', 'url'=>array('/user/mypart'), 'linkOptions'=>array('class'=>'part_act')),
+                    array('label'=>'近期活动列表', 'url'=>array('/activity/list'), 'linkOptions'=>array('class'=>'rece_act'),'active'=>$this->id=='activity'&&!isset($_REQUEST['channel'])?true:false),
+                    array('label'=>'创建活动', 'url'=>array('/activity/create'), 'linkOptions'=>array('class'=>'crea_act')),
                 ),
             )); ?>
 
             <div class="clear"></div>
+            <hr />
             <div class='top_bar'>
                 个人设置
             </div>
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
-                    array('label'=>'修改资料', 'url'=>array('/user/updateprofile')),
-                    array('label'=>'头像修改', 'url'=>array('/user/portrait')),
+                    array('label'=>'修改资料', 'url'=>array('/user/updateprofile'), 'linkOptions'=>array('class'=>'modi_info')),
+                    array('label'=>'头像修改', 'url'=>array('/user/portrait'), 'linkOptions'=>array('class'=>'modi_port')),
                 ),
             )); ?>
         </div>
