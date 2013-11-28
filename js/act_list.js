@@ -165,9 +165,10 @@ function getLi(ele, aid){
     if(ele['replyto']){
         li += '回复<a href="javascript:void(0);">'+ele['replyto']+'</a>';
     }
-    li += '</a>：'+ele['content']+'</div><span class="comment_time">'+ele['createtime']+'</span><div class="comment_tool"><span><a id="replyto_'+aid+'_'+ele['cid']+'" href="javascript:void(0);" class="replyto">回复</a></span>';
+    li += '</a>：'+ele['content']+'</div><div class="comment_tool"><span><a id="replyto_'+aid+'_'+ele['cid']+'" href="javascript:void(0);" class="replyto">回复</a></span>';
     if(ele['uid'] == user.id){
-        li += '<span><a id="delcomm_'+ele['cid']+'" class="delcomm" href="javascript:void(0);">删除</a><i>|</i></span></div></li>';
+        li += '<span><a id="delcomm_'+ele['cid']+'" class="delcomm" href="javascript:void(0);">删除</a></span>';
     }
+    li += '<span class="comment_time">'+ele['createtime']+'</span></div></li>';
     return li;
 }
