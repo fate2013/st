@@ -123,7 +123,7 @@ $(document).ready(function(){
         $.get('/activity/approve', {aid:aid,uid:uid}, function(data){
             if(data == '0'){
                 //$(ele).siblings('.appr_msg').find('.appr_status_word').text('审批通过');
-                $(ele).parent('li').hide(300);
+                $(ele).parents('li:eq(0)').hide(300);
             }
         }, 'json');
         return false;
@@ -136,7 +136,7 @@ $(document).ready(function(){
         $.get('/activity/refuse', {aid:aid,uid:uid}, function(data){
             if(data == '0'){
                 //$(ele).siblings('.appr_msg').find('.appr_status_word').text('审批拒绝');
-                $(ele).parent('li').hide(300);
+                $(ele).parents('li:eq(0)').hide(300);
             }
         }, 'json');
         return false;
