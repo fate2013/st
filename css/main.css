@@ -321,10 +321,20 @@ div.search-form
     padding: 0;
     margin: 0;
 }
+.recent ul hr{
+    width: 652px;
+    float: left;
+    height: 1px;
+    margin: 10px 24px;
+    border: 0;
+    background: -moz-linear-gradient(left,#F0F0F0 0%, #666 50%, #F0F0F0 100%);
+    background: -webkit-linear-gradient(left,#F0F0F0 0%, #666 50%, #F0F0F0 100%);
+    background: linear-gradient(left,#F0F0F0 0%, #666 50%, #F0F0F0 100%);
+    box-shadow: 0 1px 0 #FCFCFC;
+}
 .recent ul li.act_item {
     width: 747px;
     padding: 16px 10px 0 20px;
-    border-bottom: 1px solid #ccc;
     float: left;
     position: relative;
     cursor: pointer;
@@ -565,8 +575,8 @@ div.act{padding:20px 25px 0px;}
     background: -webkit-linear-gradient(top, #e3e3e3 0%, #e3e3e3 10%, #C9C9dc 70%, #ddd 100%);
     background: linear-gradient(top, #e3e3e3 0%, #e3e3e3 10%, #C9C9dc 70%, #ddd 100%);
 }*/
-.left_content ul li a:hover, .left_nav li.active{
-    background: #49B5BF url('/images/zbsj.png') 187px 11px no-repeat;
+.left_content ul li:hover, .left_nav li.active{
+    background: #49B5BF url('/images/zbsj.png') 190px 14px no-repeat;
 }
 .left_content ul li a:active{
 }
@@ -575,13 +585,14 @@ div.act{padding:20px 25px 0px;}
 .left_content .portrait_name,.portrait_name input{width:200px;height:30px;text-align:center;font-family:黑体;color:#fff;font-weight:bold;font-size:16px;margin-bottom:20px;}
 .left_nav .top_bar{width:180px;height:24px;color:white;padding:6px 0 0 39px;margin:20px 0 0 -1px;cursor:pointer;position:relative;background: url('/images/ic_actlist.png') 18px 8px no-repeat;}
 .left_nav hr{margin: 10px 10px 0;}
+.left_nav .rele_act{background:url('/images/ic_releact.png') 45px 12px no-repeat;}
 .left_nav .part_act{background:url('/images/ic_partact.png') 42px 12px no-repeat;}
 .left_nav .rece_act{background:url('/images/ic_receact.png') 45px 12px no-repeat;}
 .left_nav .crea_act{background:url('/images/ic_creaact.png') 45px 12px no-repeat;}
 .left_nav .modi_info{background:url('/images/ic_modiinfo.png') 45px 12px no-repeat;}
 .left_nav .modi_port{background:url('/images/ic_modiport.png') 42px 12px no-repeat;}
     
-.content{width:777px;float:right;overflow:hidden;border-left: #CCC solid 1px;padding: 0 0 20px 0;}
+.content{width:777px;float:right;overflow:hidden;padding: 0 0 20px 0;}
 .content_bar{width:777px;height:32px;position:relative;
     background: -moz-linear-gradient(top, #e3e3e3 0%, #e3e3e3 10%, #C0C0d0 70%, #ddd 100%);
     background: -webkit-linear-gradient(top, #e3e3e3 0%, #e3e3e3 10%, #C0C0d0 70%, #ddd 100%);

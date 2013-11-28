@@ -68,7 +68,7 @@ $this->pageTitle=Yii::app()->name;
             </div>
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
-                    array('label'=>'发布的活动', 'url'=>array('/activity/list/channel/myrelease'),'active'=>$this->id=='activity'&&isset($_REQUEST['channel'])&&$_REQUEST['channel']=='myrelease'?true:false),
+                    array('label'=>'发布的活动', 'url'=>array('/activity/list/channel/myrelease'),'linkOptions'=>array('class'=>'rele_act'),'active'=>$this->id=='activity'&&isset($_REQUEST['channel'])&&$_REQUEST['channel']=='myrelease'?true:false),
                     array('label'=>'参与的活动', 'url'=>array('/user/mypart'), 'linkOptions'=>array('class'=>'part_act')),
                     array('label'=>'近期活动列表', 'url'=>array('/activity/list'), 'linkOptions'=>array('class'=>'rece_act'),'active'=>$this->id=='activity'&&!isset($_REQUEST['channel'])?true:false),
                     array('label'=>'创建活动', 'url'=>array('/activity/create'), 'linkOptions'=>array('class'=>'crea_act')),

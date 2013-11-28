@@ -143,6 +143,7 @@ case UserActivity::STATUS_REFUSE:
 <?php } ?>
     </div>
 </li>
+<hr />
 <?php
 }
 ?>
