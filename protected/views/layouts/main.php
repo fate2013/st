@@ -40,6 +40,8 @@
     </div>
 </div>
 
+<?php $this->renderPartial('/common/_main_banner'); ?>
+
 <div class="container" id="page">
 	<!--
 	<?php if(isset($this->breadcrumbs)):?>
@@ -54,18 +56,11 @@ $this->pageTitle=Yii::app()->name;
 
 <div class="main">
     <div class='left_content'>
-        <div class='portrait'>
-            <a href='/user/portrait' style='float:left'><img class='portrait_img' width='136px' height='136px' src='<?php echo Yii::app()->session['user']->profile && Yii::app()->session['user']->profile->portrait? Yii::app()->session['user']->profile->portrait : '/images/tx.png';?>' /></a>
-        </div>
-        <div class='portrait_name'>
-            <span><?php echo Yii::app()->session['user']->displayname();?></span>
-            <input type="text" style="display:none;background:none;width:60px;border:1px solid #65B1EB;height:17px;font-size:12px;" />
-        </div>
         <div class='left_nav'>
-            <hr />
             <div class='top_bar'>
                 活动列表
             </div>
+            <hr />
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
                     array('label'=>'发布的活动', 'url'=>array('/activity/list/channel/myrelease'),'linkOptions'=>array('class'=>'rele_act'),'active'=>$this->id=='activity'&&isset($_REQUEST['channel'])&&$_REQUEST['channel']=='myrelease'?true:false),
@@ -76,25 +71,37 @@ $this->pageTitle=Yii::app()->name;
             )); ?>
 
             <div class="clear"></div>
-            <hr />
+        </div>
+        <div class='left_nav'>
             <div class='top_bar'>
                 个人设置
             </div>
+            <hr />
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
                     array('label'=>'修改资料', 'url'=>array('/user/updateprofile'), 'linkOptions'=>array('class'=>'modi_info')),
                     array('label'=>'头像修改', 'url'=>array('/user/portrait'), 'linkOptions'=>array('class'=>'modi_port')),
                 ),
             )); ?>
+            <div class="clear"></div>
         </div>
     </div>
     <div class='content'>
         <div class='content_bar'>
             <div class='content_title'>
-                <?php echo $this->title; ?>
+                <div class='ty1'>
+                </div>
+                <div class='ty2'>
+                    活动标签
+                </div>
+                <div class='ty3'>
+                </div>
+                <div class='new_act'>
+                    发布活动
+                </div>
             </div>
-            <div class='new_act'>
-                创建活动
+            <div class='content_tag'>
+<?php $this->renderPartial('/common/_actfilter');?>
             </div>
         </div>
         <div class='content_main'>
