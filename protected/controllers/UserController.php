@@ -116,7 +116,9 @@ class UserController extends Controller
             $filepath = Yii::app()->basePath."/../images/portraits/{$filename}";
             file_put_contents($filepath, $img);
             $src = Yii::app()->session['user']->profile->portrait;
-            unlink(Yii::app()->basePath."/..{$src}");
+            if(file_exists(Yii::app()->basePath."/..{$src}")){
+                unlink(Yii::app()->basePath."/..{$src}");
+            }
             Yii::app()->session['user']->profile->portrait = "/images/portraits/{$filename}";
             $result = array();
             if(Yii::app()->session['user']->profile->save()){
