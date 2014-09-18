@@ -23,11 +23,31 @@ class Controller extends CController
 
     public $title;
 
-    public function filterNeedLogin($filterChain){
+    public function filterNeedLogin($filterChain) {
         if(empty(Yii::app()->session['user'])){
             $this->redirect('/site/index');
             exit;
         }
         $filterChain->run();
+    }
+
+    public function filterNeedLoginApi($filterChain) {
+        if(empty(Yii::app()->session['user'])){
+            $this->error('101', 'Need login first');
+        }
+        $filterChain->run();
+    }
+
+    public function error($code, $msg) {
+        header("Content-type:json/application;charset=utf-8");
+        echo CJSON::encode(array(
+            'code' => $code,
+            'msg' => $msg,
+        ));
+    }
+
+    public function renderJson($data) {
+        header("Content-type:json/application;charset=utf-8");
+        echo CJSON::encode($data);
     }
 }

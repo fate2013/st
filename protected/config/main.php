@@ -49,8 +49,8 @@ return array(
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=sharetime',
 			'emulatePrepare' => true,
-			'username' => 'mysql',
-			'password' => 'tlldll19871013',
+			'username' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
             'enableProfiling' => true,
 		),
