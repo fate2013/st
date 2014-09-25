@@ -81,7 +81,7 @@ class Activity extends CActiveRecord
             'organizer' => array(self::BELONGS_TO, 'User', 'organizer_id'),
             'user_activities' => array(self::HAS_MANY, 'UserActivity', 'aid'),
             'parts' => array(self::HAS_MANY, 'User', array('uid' => 'id'), 'through'=>'user_activities', 'select'=>'parts.*,user_activities.status as status,user_activities.msg as msg','group'=>'aid,uid'),
-            'userStatus' => array(self::HAS_ONE, 'UserActivity', 'aid', 'on'=>'uid='.Yii::app()->session['user']->id, 'select'=>'user_activities.status'),
+            'userStatus' => array(self::HAS_ONE, 'UserActivity', 'aid', 'on'=>'uid='.(Yii::app()->session['user'] ? Yii::app()->session['user']->id : 0), 'select'=>'user_activities.status'),
             'comments' => array(self::HAS_MANY, 'Comment', 'aid'),
 		);
 	}
