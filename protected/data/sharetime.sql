@@ -92,7 +92,7 @@ CREATE TABLE `official_activities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subject` varchar(300) NOT NULL,
   `profile` mediumtext,
-  `start_time` datetime DEFAULT NULL,
+  `start_time` varchar(100) NOT NULL DEFAULT '常年',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `type` varchar(20) NOT NULL DEFAULT '',
   `province` varchar(30) DEFAULT NULL,
@@ -257,4 +257,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-01 18:58:51
+-- Dump completed on 2014-11-01 19:19:52
