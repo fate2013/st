@@ -37,21 +37,28 @@ class OfficialActivity extends CActiveRecord
     }
     
 
-    public function slice($limit=12, $id=0, $mode)
+    public function slice($limit=12, $id=0, $mode='default')
     {
-        if ($mode == 'last') {
-            $condition = 'id>:id';
-            $order = 'id asc';
+        if ($mode == 'default') {
+            $this->getDbCriteria()->mergeWith(array(
+                'order'=>'id desc',
+                'limit'=>$limit,
+            ));
         } else {
-            $condition = 'id<:id';
-            $order = 'id desc';
+            if ($mode == 'last') {
+                $condition = 'id>:id';
+                $order = 'id asc';
+            } elseif($mode == 'prev') {
+                $condition = 'id<:id';
+                $order = 'id desc';
+            }
+            $this->getDbCriteria()->mergeWith(array(
+                'condition'=>$condition,
+                'params'=>array(':id' => $id),
+                'order'=>$order,
+                'limit'=>$limit,
+            ));
         }
-        $this->getDbCriteria()->mergeWith(array(
-            'condition'=>$condition,
-            'params'=>array(':id' => $id),
-            'order'=>$order,
-            'limit'=>$limit,
-        ));
         return $this;
     }
 

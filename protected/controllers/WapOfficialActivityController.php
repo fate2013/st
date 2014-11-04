@@ -13,11 +13,11 @@ class WapOfficialActivityController extends Controller
         $type = isset($_REQUEST['type'])? $_REQUEST['type'] : false;
         $lastId = isset($_REQUEST['last_id'])? $_REQUEST['last_id'] : 0;
         $prevId = isset($_REQUEST['prev_id'])? $_REQUEST['prev_id'] : 0;
-        if ($lastId && $prevId || !$lastId && !$prevId) {
-            echo 'Should chroose one of last_id or prev_id';
+        if ($lastId && $prevId) {
+            echo 'Should chroose one of last_id or prev_id, not both';
             exit();
         }
-        $mode = $lastId? 'last' : 'prev';
+        $mode = $lastId? 'last' : $prevId? 'prev' : 'default';
         $id = $lastId? $lastId : $prevId;
         $conditions = '';
         $params = array();
