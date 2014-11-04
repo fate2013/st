@@ -37,12 +37,19 @@ class OfficialActivity extends CActiveRecord
     }
     
 
-    public function slice($limit=12, $lastId=0)
+    public function slice($limit=12, $id=0, $mode)
     {
+        if ($mode == 'last') {
+            $condition = 'id>:id';
+            $order = 'id asc';
+        } else {
+            $condition = 'id<:id';
+            $order = 'id desc';
+        }
         $this->getDbCriteria()->mergeWith(array(
-            'condition'=>'id>:id',
-            'params'=>array(':id' => $lastId),
-            'order'=>'id',
+            'condition'=>$condition,
+            'params'=>array(':id' => $id),
+            'order'=>$order,
             'limit'=>$limit,
         ));
         return $this;
