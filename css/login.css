@@ -8,7 +8,7 @@ body{
     margin: 0;
     height: 100%;
     width: 100%;
-    background: url('/images/bg2.jpg') 0 -10px no-repeat;
+    background: url('/images/bg.png') 0 -10px no-repeat;
     background-size: cover, 100% auto;
     overflow: hidden;
 }
@@ -26,7 +26,7 @@ li{
 .topbar{
     height: 49px;
     width: 100%;
-    background: url('/images/headerline.jpg') repeat-x;
+    background-color: rgb(35,35,35);
 }
 .topcontent{
     margin: 0 auto;
@@ -35,7 +35,7 @@ li{
 .logo{
     width: 200px;
     height: 36px;
-    background: url('/images/logo.png') no-repeat transparent;
+    background: url('/images/logo_new.png') no-repeat transparent;
     float: left;
     margin: 12px 0 0 20px;
 }
@@ -74,11 +74,19 @@ li{
     width: 430px;
     height: 500px;
     margin: 148px 0 0 0;
+    box-shadow: 1px 1px 2px #333;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    overflow:hidden;
 }
 .logintop{
-    background: url('/images/line.png') center no-repeat;
     height: 10px;
     width: 430px;
+    overflow:hidden;
+}
+.logintop div{
+    height: 100%;
+    float: left;
 }
 .main{
     margin: 0 auto;
@@ -91,7 +99,7 @@ li{
     margin: 104px 0 0 0;
 }
 .banner div{
-    color: #E0DEE0;
+    color: #333;
     font-size: 24px;
     margin: 20px auto 0;
     width: 249px;
@@ -116,7 +124,7 @@ li{
     width: 298px;
     padding: 0 0 0 44px;
     font-size: 20px;
-    color: #666;
+    color: #a0a0a0;
 }
 .loginframe input.captcha{
     width: 180px;
@@ -165,7 +173,7 @@ li{
 .logintool .submit input{
     width: 116px;
     margin: 0 0 0 5px;
-    background: #FFCA68;
+    background: rgb(253,45,94);
     height: 33px;
     vertical-align: bottom;
     border: 0;

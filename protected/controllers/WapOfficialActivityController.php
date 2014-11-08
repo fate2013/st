@@ -17,7 +17,7 @@ class WapOfficialActivityController extends Controller
             echo 'Should chroose one of last_id or prev_id, not both';
             exit();
         }
-        $mode = $lastId? 'last' : $prevId? 'prev' : 'default';
+        $mode = $lastId? 'last' : ($prevId? 'prev' : 'default');
         $id = $lastId? $lastId : $prevId;
         $conditions = '';
         $params = array();

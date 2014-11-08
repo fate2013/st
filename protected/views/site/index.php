@@ -40,9 +40,8 @@ $this->pageTitle=Yii::app()->name;
 
 <div class="main">
     <div class='banner'>
-        <img src='/images/banner.png' />
         <div>
-            分享让生活更精彩！
+            面对面更精彩！
         </div>
     </div>
 
@@ -56,6 +55,12 @@ $this->pageTitle=Yii::app()->name;
 
     <div class='login'>
         <div class='logintop'>
+            <div style='width:10%;background-color:rgb(202,65,97);'></div>
+            <div style='width:20%;background-color:rgb(241,143,154);'></div>
+            <div style='width:20%;background-color:rgb(245,111,127);'></div>
+            <div style='width:20%;background-color:rgb(181,214,236);'></div>
+            <div style='width:20%;background-color:rgb(106,172,214);'></div>
+            <div style='width:10%;background-color:rgb(60,136,181);'></div>
         </div>
         <div class='loginframe'>
             <div class='name_pic'></div>
