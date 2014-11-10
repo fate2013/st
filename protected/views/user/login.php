@@ -108,6 +108,19 @@ $this->pageTitle=Yii::app()->name;
 
                 <div class='ddlogin'>
                     或使用以下帐号登录
+                <div class='dlwrap'>
+                    <div class='dl'>
+<script id='denglu_login_js' type='text/javascript' charset='utf-8'></script>
+<script type='text/javascript' charset='utf-8'>
+    (function() {
+                var _dl_time = new Date().getTime();
+                        var _dl_login = document.getElementById('denglu_login_js');
+                        _dl_login.id = _dl_login.id + '_' + _dl_time;
+                                _dl_login.src = 'http://static.denglu.cc/connect/logincode?appid=7293dengu1Cc8N0M3bzGtV8EgWgk63&v=1.0.2&widget=5&styletype=1&size=272_62&asyn=true&time=' + _dl_time;
+                            })();
+</script>
+                    </div>
+                </div>
                 </div>
 
                 <div class='regtool'>
