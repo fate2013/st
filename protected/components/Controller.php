@@ -25,7 +25,7 @@ class Controller extends CController
 
     public function filterNeedLogin($filterChain) {
         if(empty(Yii::app()->session['user'])){
-            $this->redirect('/site/index');
+            $this->redirect('/user/login');
             exit;
         }
         $filterChain->run();

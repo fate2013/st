@@ -10,7 +10,8 @@ body{
     width: 100%;
     background: url('/images/bg.png') 0 -10px no-repeat;
     background-size: cover, 100% auto;
-    overflow: hidden;
+/*    overflow: hidden;
+ */
 }
 ul{
     margin: 0;
@@ -24,7 +25,7 @@ li{
     float: left;
 }
 .topbar{
-    height: 49px;
+    height: 52px;
     width: 100%;
     background-color: rgb(35,35,35);
 }
@@ -39,17 +40,6 @@ li{
     float: left;
     margin: 12px 0 0 20px;
 }
-.topcontent .input{
-    width: 100px;
-    float: left;
-    margin: 19px 0 0 270px;
-    position: relative;
-}
-.topcontent .input img{
-    position: absolute;
-    right: 2px;
-    top: 5px;
-}
 .topcontent .input input{
     width: 100px;
     height: 21px;
@@ -61,30 +51,59 @@ li{
     color: #FFFFFF;
     padding: 0 0 0 5px;
 }
-.nav{
+.top-right{
     float: right;
-    margin: 22px 20px 0 0;
+    margin-top: 5px;
 }
-.nav li{
-    margin: 0 9px;
-    color: #898D95;
+.top-right input.input_text{
+    border:none;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 2px 5px;
+    width: 120px;
+    margin-left: 10px;
 }
-.login{
+.top-right .login-submit{
+    background: rgb(253,45,94);
+    border: none;
+    color: white;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+.top-right .logintool{
+    font-size: 13px;
+    margin-top: 2px;
+    color: #a0a0a0;
+    padding-left: 8px;
+}
+.top-right .forget-passwd{
+    margin-left: 40px;
+}
+.top-right a.forget-passwd:visited{
+    color: #a0a0a0;
+    text-decoration: none;
+}
+.top-right a.forget-passwd:link{
+    color: #a0a0a0;
+    text-decoration: none;
+}
+.reg{
     float: right;
     width: 430px;
-    height: 500px;
+    height: 380px;
     margin: 148px 0 0 0;
     box-shadow: 1px 1px 2px #333;
     -webkit-border-radius: 4px;
     border-radius: 4px;
     overflow:hidden;
 }
-.logintop{
+.regtop{
     height: 10px;
     width: 430px;
     overflow:hidden;
 }
-.logintop div{
+.regtop div{
     height: 100%;
     float: left;
 }
@@ -101,10 +120,10 @@ li{
 .banner div{
     color: #333;
     font-size: 24px;
-    margin: 20px auto 0;
+    margin: 140px auto 0;
     width: 249px;
 }
-.loginframe{
+.regframe{
     background: #FFFFFF;
     width: 100%;
     height: 380px;
@@ -112,8 +131,9 @@ li{
     -webkit-border-radius: 4px;
     border-radius: 4px;
     position: relative;
+    padding-top: 8px;
 }
-.loginframe input.input_text{
+.regframe input.input_text{
     box-shadow: 1px 1px 5px rgb(150,150,150) inset;
     border: 1px;
     -webkit-border-radius: 4px;
@@ -123,10 +143,10 @@ li{
     margin: 23px 44px 0;
     width: 298px;
     padding: 0 0 0 44px;
-    font-size: 20px;
+    font-size: 15px;
     color: #a0a0a0;
 }
-.loginframe input.captcha{
+.regframe input.captcha{
     width: 180px;
     margin-right: 0;
     padding-left: 10px;
@@ -141,7 +161,7 @@ li{
     height: 30px;
     left: 49px;
     position: absolute;
-    top: 26px;
+    top: 34px;
 }
 .pass_pic{
     background: url('/images/pass-icon.png') center no-repeat;
@@ -149,28 +169,35 @@ li{
     height: 30px;
     left: 49px;
     position: absolute;
-    top: 89px;
+    top: 93px;
 }
-.logintool{
-    margin: 19px 0 0 44px;
+.pass_pic2{
+    background: url('/images/pass-icon.png') center no-repeat;
+    width: 30px;
+    height: 30px;
+    left: 49px;
+    position: absolute;
+    top: 151px;
+}
+.regtool{
+    margin: 2px 50px 0 0;
     color: #7c7c7c;
     font-size: 14px;
     padding-bottom: 15px;
-    width: 386px;
-    border-bottom: 1px solid #CCCCCC;
+    width: 120px;
+    float: right;
 }
-.logintool input{
+.regtool input{
     margin: 0;
 }
-.logintool .submit{
+.regtool .submit{
     display: inline;
-    margin: 0 0 0 44px;
 }
-.logintool .submit a{
+.regtool .submit a{
     color: #7c7c7c;
     text-decoration: none;
 }
-.logintool .submit input{
+.regtool .submit input{
     width: 116px;
     margin: 0 0 0 5px;
     background: rgb(253,45,94);
@@ -184,43 +211,47 @@ li{
     padding-bottom: 3px;
     cursor: pointer;
 }
-.regframe{
-    padding: 19px 0 0 52px;
-    color: #7c7c7c;
-    font-size: 14px;
-    float: left;
-    height: 30px;
-    width: 154px;
-}
-.regframe .w101{
-    width: 154px;
-    line-height: 25px;
-    float: left;
-}
-.regframe a{
-    text-decoration: none;
-    color: #243659;
-}
-.regsubmit{
-    float: right;
-    -webkit-border-bottom-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    -webkit-border-bottom-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    width: 100%;
-    height: 39px;
-    background: #494949;
-    margin-top: 30px;
-    cursor: pointer;
-    color: #FFFFFF;
-    font-size: 20px;
-    line-height: 43px;
-    font-weight: bold;
-    text-align: center;
-    letter-spacing: 20px;
-}
 .errorMessage{
     color: #FF0000;
+}
+.tiaokuan{
+    margin: 23px 44px 0;
+    color: #333;
+    font-size: 14px;
+}
+.tiaokuan a:link{
+    color: rgb(253,45,94);
+    text-decoration:none;
+}
+.tiaokuan a:visited{
+    color: rgb(253,45,94);
+    text-decoration:none;
+}
+.regbottom{
+    margin: 0;
+    padding: 0;
+}
+.ljzc{
+    margin: 23px 44px 0;
+    color: #333;
+    font-size: 14px;
+    width: 160px;
+    float:left;
+}
+.ljzc a:link{
+    color: rgb(253,45,94);
+    text-decoration:none;
+}
+.ljzc a:visited{
+    color: rgb(253,45,94);
+    text-decoration:none;
+}
+.ddlogin{
+    margin: 10px 44px 0;
+    color: #333;
+    font-size: 14px;
+    width: 160px;
+    float:left;
 }
 .share{
     width: 170px;

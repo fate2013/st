@@ -22,18 +22,27 @@ $this->pageTitle=Yii::app()->name;
 <div class='topbar'>
     <div class='topcontent'>
         <div class='logo'>
-        </div>       
-        <div class='input'>
-            <img src='/images/search.png' />
-            <input type='text' />
         </div>
-        <div class='nav'>
-            <ul>
-                <li>首页
-                <li>活动
-                <li>站点
-                <li>联系我们
-            </ul>
+        <div class='top-right'>
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'login-form',
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+	),
+)); ?>
+            <?php echo $form->textField($model,'username', array('tabindex'=>1, 'autofocus'=>true, 'class'=>'input_text', 'placeholder'=>'用户名或邮箱', 'autocomplete'=>'off')); ?>
+            <?php echo $form->passwordField($model,'password', array('tabindex'=>2, 'class'=>'input_text', 'placeholder'=>'密码', 'autocomplete'=>'off')); ?>
+            <input class='login-submit' type='submit' value='登录' />
+<?php $this->endWidget(); ?>
+            <div class='logintool'>
+                <?php echo $form->error($model,'username'); ?>
+                <?php echo $form->error($model,'password'); ?>
+                <?php echo $form->error($model,'verifyCode'); ?>
+                <input type='checkbox' id='autologin' />
+                <label for='autologin'>下次自动登录</label>
+                <a class='forget-passwd' href='javascript:void(0);'>忘记密码?</a>
+            </div>
         </div>
     </div>
 </div>
@@ -81,7 +90,7 @@ $this->pageTitle=Yii::app()->name;
             </div>
             <?php endif; ?>
 
-            <div class='logintool'>
+            <div class='regtool'>
                 <?php echo $form->error($model,'username'); ?>
                 <?php echo $form->error($model,'password'); ?>
                 <?php echo $form->error($model,'verifyCode'); ?>
@@ -89,7 +98,7 @@ $this->pageTitle=Yii::app()->name;
                 <label for='autologin'>下次自动登录</label>
                 <div class='submit'>
                     <a href='javascript:void(0);'>忘记密码</a>
-                    <input type='submit' value='登  录' />
+                    <input type='submit' value='注册' />
                 </div>
             </div>
 

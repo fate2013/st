@@ -151,17 +151,23 @@ class UserController extends Controller
                 $form->username = $model->name;
                 $form->password = $_POST['User']['password'];
                 $form->login();
-                if($succ)
-                    $this->redirect('/user/updateprofile');
+                if($succ) {
+                    //$this->redirect('/user/updateprofile');
+                    $this->redirect('/user/myrelease');
+                }
             }
         }
 
-        $this->renderPartial('register',array('model'=>$model));
     }
 
-	public function actionLogin()
+    public function actionLogin()
 	{
+        if(Yii::app()->session['user']){
+            $this->redirect('/activity/list');
+        }
 		$model=new LoginForm;
+
+        $regModel = new User;
 
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
@@ -180,7 +186,10 @@ class UserController extends Controller
             }
 		}
 		// display the login form
-		$this->render('login',array('model'=>$model));
+        $this->renderPartial('login',array(
+            'model'=>$model,
+            'regModel' => $regModel,
+        ));
 	}
 
 	/**

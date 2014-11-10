@@ -56,7 +56,7 @@ class SiteController extends Controller
             }
 		}
 		// display the login form
-		$this->renderPartial('index',array('model'=>$model));
+		$this->renderPartial('login',array('model'=>$model));
 	}
 
     public function actionIndexold()
