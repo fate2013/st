@@ -2,6 +2,10 @@
 
 class UserController extends Controller
 {
+    const APP_ID = '7293dengu1Cc8N0M3bzGtV8EgWgk63';
+    const API_KEY = '50209729Z1PxpH80cLrbSO360vWWN6';
+    const DENGLU_USERINFO_API = 'http://open.denglu.cc/api/v4/user_info';
+
 	public function actions()
 	{
 		return array(
@@ -16,7 +20,7 @@ class UserController extends Controller
     public function filters()
     {
         return array(
-            'needLogin - login,register,captcha',
+            'needLogin - login,loginCallback,register,captcha',
         );
     }
 
@@ -192,9 +196,49 @@ class UserController extends Controller
         ));
 	}
 
-	/**
-	 * Logs out the current user and redirect to homepage.
-	 */
+    //http://open.denglu.cc/api/v4/user_info?appid=XXX&token=XXXX&timestamp=31232127&version=1.0&sign_type=MD5&sign=B232JJ2KFSL3SALKL232
+    public function actionLoginCallback() {
+        $token = $_GET['token'];
+        $tz = time() * 1000;
+        $ver = '1.0';
+        $signType = 'MD5';
+        $sign = $this->_sign($token, $tz, $ver, $signType);
+        $httpClient = new EHttpClient(self::DENGLU_USERINFO_API, array('timeout' => 30));
+        $httpClient->setParameterGet('appid', self::APP_ID);
+        $httpClient->setParameterGet('token', $token);
+        $httpClient->setParameterGet('timestamp', $tz);
+        $httpClient->setParameterGet('version', $ver);
+        $httpClient->setParameterGet('sign_type', $signType);
+        $httpClient->setParameterGet('sign', $sign);
+        $response = $httpClient->request();
+        if ($response->isSuccessful()) {
+            $json = CJSON::decode($response->getBody());
+            $uid = $json['mediaUserID'];
+            if (!$user = User::model()->findByPk($uid)) {
+                $user = new User;
+                $user->id = $uid;
+                $user->name = $json['name'];
+                $user->password = 1;
+                $user->password2 = 1;
+                $user->save();
+                $profile = new UserProfile;
+                $profile->id = $uid;
+                $profile->portrait = $json['profileImageUrl'];
+                $profile->sex = $json['gender'];
+                $profile->save();
+            }
+            Yii::app()->session['user'] = $user;
+            $this->redirect('/user/myrelease');
+        } else {
+            echo "Fetch user info from denglu error, errcode: {$response->getCode()}";
+        }
+    }
+
+    private function _sign($token, $tz, $ver, $signType) {
+        $concatParams = "appid=" . self::APP_ID . "sign_type={$signType}timestamp={$tz}token={$token}version={$ver}" . self::API_KEY;
+        return md5($concatParams);
+    }
+
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();

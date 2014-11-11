@@ -23,7 +23,7 @@ class UserProfile extends CActiveRecord
             array('sex', 'boolean'),
 			array('age', 'numerical', 'integerOnly'=>true, 'max'=>150),
             array('image', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty'=>true, 'maxSize'=>1024*1024*2),
-			array('id, age, sex, birthday', 'safe', 'on'=>'search'),
+			array('id, portrait, age, sex, birthday', 'safe'),
         );
     }
 
@@ -46,8 +46,9 @@ class UserProfile extends CActiveRecord
 
     public function genderSelection(){
         return array(
-            0 => 'Male',
-            1 => 'Female',
+            0 => 'Unknown',
+            1 => 'Male',
+            2 => 'Female',
         );
     }
 

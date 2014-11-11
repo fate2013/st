@@ -51,7 +51,7 @@ class User extends CActiveRecord
 			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, realname', 'safe'),
+			array('id, name, realname, password', 'safe'),
 		);
 	}
 
