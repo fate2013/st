@@ -43,6 +43,7 @@ class OfficialActivity extends CActiveRecord
             $this->getDbCriteria()->mergeWith(array(
                 'order'=>'id desc',
                 'limit'=>$limit,
+                'select' => 'id,subject,profile,start_time,created_at,type,province,city,location,img,status,price,url',
             ));
         } else {
             if ($mode == 'last') {
@@ -57,6 +58,7 @@ class OfficialActivity extends CActiveRecord
                 'params'=>array(':id' => $id),
                 'order'=>$order,
                 'limit'=>$limit,
+                'select' => 'id,subject,profile,start_time,created_at,type,province,city,location,img,status,price,url',
             ));
         }
         return $this;
