@@ -41,7 +41,7 @@ li{
 .topcontent .input{
     width: 155px;
     float: right;
-    margin: 19px 0 0 216px;
+    margin: 19px 0 0 146px;
     position: relative;
 }
 .topcontent .input img{
@@ -756,3 +756,11 @@ div.act{padding:20px 25px 0px;}
 .act .addinfo .createtime{margin-top: 5px;}
 .act_return{float: left;margin: 30px 0 0 0;}
 .act_return a{color: #2064A9;text-decoration: none;}
+.login{
+    color: #ccc;
+    float:right;
+    margin: 19px 0 0 30px;
+}
+.login a:link{color:#a0a0a0;text-decoration:none;}
+.login a:visited{color:#a0a0a0;text-decoration:none;}
+.login a:hover{color:#a0a0a0;text-decoration:underline;}

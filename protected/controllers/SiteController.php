@@ -24,7 +24,7 @@ class SiteController extends Controller
     public function filters()
     {
         return array(
-            'needLogin - index,login,register,captcha,indexold,test',
+            'needLogin',
         );
     }
 

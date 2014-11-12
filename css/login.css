@@ -10,8 +10,7 @@ body{
     width: 100%;
     background: url('/images/bg.png') 0 -10px no-repeat;
     background-size: cover, 100% auto;
-/*    overflow: hidden;
- */
+    overflow: hidden;
 }
 ul{
     margin: 0;

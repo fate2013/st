@@ -241,8 +241,8 @@ class UserController extends Controller
 
 	public function actionLogout()
 	{
-		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
+		unset(Yii::app()->session['user']);
+        $this->redirect('/user/login');
 	}
 
     public function actionUpdatename()

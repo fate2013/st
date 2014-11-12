@@ -25,6 +25,10 @@
     <div class='topcontent'>
         <div class='logo'>
         </div>       
+        <div class='login'>
+            您好 <?php echo Yii::app()->session['user']->displayname();?>&nbsp;&nbsp;
+            <a href='/user/logout'>退出登录</a>
+        </div>
         <div class='input'>
             <img src='/images/search.png' />
             <input type='text' />
