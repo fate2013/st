@@ -14,8 +14,7 @@ class WapOfficialActivityController extends Controller
         $lastId = isset($_REQUEST['last_id'])? $_REQUEST['last_id'] : 0;
         $prevId = isset($_REQUEST['prev_id'])? $_REQUEST['prev_id'] : 0;
         if ($lastId && $prevId) {
-            echo 'Should chroose one of last_id or prev_id, not both';
-            exit();
+            $this->error(406, 'Should chroose one of last_id or prev_id, not both');
         }
         $mode = $lastId? 'last' : ($prevId? 'prev' : 'default');
         $id = $lastId? $lastId : $prevId;
@@ -29,9 +28,17 @@ class WapOfficialActivityController extends Controller
             $conditions = substr($conditions, 0, strlen($conditions) - 5);
         }
         $activities = OfficialActivity::model()->slice(12, $id, $mode)->findAll($conditions, $params);
-        $this->title = '活动列表';
 
         $this->renderJson($activities);
+    }
+
+    public function actionDetail() {
+        if (!isset($_REQUEST['id'])) {
+            $this->error(404, 'ERROR occur:No id input');
+        }
+        $id = $_REQUEST['id'];
+        $activity = OfficialActivity::model()->findByPk($id);
+        $this->renderJson($activity);
     }
 
 }
