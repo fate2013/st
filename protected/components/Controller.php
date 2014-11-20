@@ -26,7 +26,7 @@ class Controller extends CController
     public function filterNeedLogin($filterChain) {
         if(empty(Yii::app()->session['user'])){
             $this->redirect('/user/login');
-            exit;
+            Yii::app()->end();
         }
         $filterChain->run();
     }
@@ -44,10 +44,12 @@ class Controller extends CController
             'code' => $code,
             'msg' => $msg,
         ));
+        Yii::app()->end();
     }
 
     public function renderJson($data) {
         header("Content-type:json/application;charset=utf-8");
         echo CJSON::encode($data);
+        Yii::app()->end();
     }
 }
