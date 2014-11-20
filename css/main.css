@@ -3,7 +3,7 @@ body{
 	padding: 0;
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-    background: #EFEFEF;
+    background: rgb(107,152,187);
     background-size: cover, 100% auto;
 }
 ul{
@@ -22,9 +22,9 @@ li{
     width: 980px;
 }
 .topbar{
-    height: 49px;
+    height: 38px;
     width: 100%;
-    background:#232323;
+    background: rgb(25,49,70);
     box-shadow: 0 -1px 2px #1a1a1a inset;
 }
 .topcontent{
@@ -33,7 +33,7 @@ li{
 }
 .logo{
     width: 200px;
-    height: 36px;
+    height: 28px;
     background: url('/images/logo.png') no-repeat transparent;
     float: left;
     margin: 12px 0 0 20px;
@@ -41,7 +41,7 @@ li{
 .topcontent .input{
     width: 155px;
     float: right;
-    margin: 19px 0 0 146px;
+    margin: 10px 0 0 146px;
     position: relative;
 }
 .topcontent .input img{
@@ -62,29 +62,25 @@ li{
 }
 .nav{
     float: left;
-    margin: 22px 20px 0 0;
+    margin: 12px 0 0 0;
 }
 .nav li{
-    margin: 0 9px;
-    color: #898D95;
+    margin: 0 7px;
+    color: #fff;
+    font-size: 16px;
 }
 .main_banner .main_bar{
     width:100%;
-    height:115px;
-    background:#65C4A4;
-    box-shadow: 0 -1px 1px #999 inset;
+    height:190px;
+    background: rgb(11,70,123);
 }
 .main_banner .wrapper{
     width:980px;
     margin: 0 auto;
 }
 .main_banner .round_bar{
-    background:#65C4A4;
     width:259px;
     height:130px;
-    -webkit-border-radius: 4px;
-    border-bottom-left-radius: 150px;
-    border-bottom-right-radius: 150px;
     position:relative;
     top:-48px;
     left:-28px;
@@ -605,11 +601,11 @@ div.act{padding:20px 25px 0px;}
 .left_content ul li a:active{
 }
 .main_banner .portrait{
-    margin:0 auto 10px;width:140px;height:140px;background:#fff;-moz-border-radius: 68px;-webkit-border-radius: 68px;border-radius: 68px;
+    margin:0 auto 10px;width:140px;height:140px;background:#fff;
     position:relative;
     top:-56px;
 }
-.main_banner .portrait_img{margin:2px;-moz-border-radius: 68px;-webkit-border-radius: 68px;border-radius: 68px;}
+.main_banner .portrait_img{margin:2px;}
 .main_banner .portrait_name,.portrait_name input{
     width:88px;height:30px;text-align:center;font-family:黑体;color:#fff;font-weight:bold;font-size:16px;
     margin:0 auto 20px;
@@ -759,7 +755,7 @@ div.act{padding:20px 25px 0px;}
 .login{
     color: #ccc;
     float:right;
-    margin: 19px 0 0 30px;
+    margin: 14px 0 0 30px;
 }
 .login a:link{color:#a0a0a0;text-decoration:none;}
 .login a:visited{color:#a0a0a0;text-decoration:none;}

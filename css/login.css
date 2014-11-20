@@ -35,7 +35,7 @@ li{
 .logo{
     width: 200px;
     height: 36px;
-    background: url('/images/logo_new.png') no-repeat transparent;
+    background: url('/images/logo.png') no-repeat transparent;
     float: left;
     margin: 12px 0 0 20px;
 }
