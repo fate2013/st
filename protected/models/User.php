@@ -48,7 +48,6 @@ class User extends CActiveRecord
             array('name', 'unique'),
             array('password2', 'compare', 'compareAttribute'=>'password'),
 			array('name, realname', 'length', 'max'=>20),
-			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, realname, password', 'safe'),
